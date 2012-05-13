@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, mainActivity!</string>
+    <string name="app_name">ElectoralCalculator</string>
+    <string name="txtvwParty">Party</string>
+    <string name="txtvwVotes">Votes</string>
+    <string name="buttonAddParty">Add party</string>
+    <string name="txtvwSeats">Seats</string>
+    <string name="buttonCalculate">Calculate</string>
+    <string name="txtvwPartyList">Party list:</string>
+	<string name="toastPartyVotesEmpty">The name of the party and the number of votes are required values!</string>
+	<string name="toastPartyEmpty">The name of the party is a required value!</string>
+	<string name="toastVotesEmpty">The number of votes is a required value!</string>
+	<string name="toastSeatsEmpty">The number of seats is a required value!</string>
+	<string name="toastVotesMapEmpty">There should be at least one party!</string>
+	<string name="twoDecimalFormat">#.##</string>
+	<string name="txtvwResults">This is the results view</string>
+</resources>
