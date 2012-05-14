@@ -3,33 +3,35 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/txtvwParty"
+    
+	<TextView
+        android:id="@+id/txtvwSeats"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtvwParty" />
+        android:text="@string/txtvwSeats" />
 
     <EditText
-        android:id="@+id/editParty"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/txtvwVotes"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txtvwVotes" />
-
-    <EditText
-        android:id="@+id/editVotes"
+        android:id="@+id/editSeats"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="number" />
 
     <Button
-        android:id="@+id/buttonAddParty"
+        android:id="@+id/buttonCalculate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/buttonAddParty" />
+        android:text="@string/buttonCalculate" />
+
+    <TextView
+        android:id="@+id/txtvwPartyList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtvwPartyList" />
+
+    <ListView
+        android:id="@+id/listParties"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+    
 </LinearLayout>

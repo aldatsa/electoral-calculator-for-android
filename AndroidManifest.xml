@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity 
+            android:name=".PartyListActivity">
+        </activity>
+        <activity 
             android:name=".ResultActivity">
         </activity>
     </application>
