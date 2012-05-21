@@ -28,7 +28,19 @@ public class PartyListActivity extends Activity
 	ListView listParties;
 	public static ArrayList<String> listItems = new ArrayList<String>();
 	public static ArrayAdapter<String> adapter;
-
+	
+	private static String method = "D'Hondt";
+	
+	public static String getCalculationMethod()
+	{
+		return method;
+	}
+	
+	public static void setCalculationMethod(String calculationMethod)
+	{
+		method = calculationMethod;
+	}
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {

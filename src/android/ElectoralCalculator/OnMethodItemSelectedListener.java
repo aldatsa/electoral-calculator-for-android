@@ -6,11 +6,13 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 public class OnMethodItemSelectedListener implements OnItemSelectedListener 
-{
+{	
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) 
 	{
+		PartyListActivity.setCalculationMethod(parent.getItemAtPosition(pos).toString());
+		
 		Toast.makeText(parent.getContext(), "The selected method is " +
-			parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+			PartyListActivity.getCalculationMethod(), Toast.LENGTH_LONG).show();
 	}
 	
 	public void onNothingSelected(AdapterView parent)
