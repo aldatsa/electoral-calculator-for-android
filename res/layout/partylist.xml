@@ -16,6 +16,12 @@
         android:layout_height="wrap_content"
         android:inputType="number" />
 
+    <Spinner
+        android:id="@+id/spinnerMethods"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/spinnerMethods_prompt" />
+
     <Button
         android:id="@+id/buttonCalculate"
         android:layout_width="fill_parent"

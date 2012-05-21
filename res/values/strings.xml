@@ -15,4 +15,14 @@
 	<string name="toastVotesMapEmpty">There should be at least one party!</string>
 	<string name="twoDecimalFormat">#.##</string>
 	<string name="txtvwResults">This is the results view</string>
+	<string name="spinnerMethods_prompt">Choose a method</string>
+	<string-array name="methods_array">
+        <item>D\'Hondt</item>
+        <item>Sainte-Laguë</item>
+        <item>Modified Sainte-Laguë</item>
+        <item>Imperiali</item>
+        <item>Hare quota</item>
+        <item>Droop quota</item>
+    </string-array>
+	
 </resources>

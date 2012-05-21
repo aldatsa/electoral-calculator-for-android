@@ -14,7 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
+
 
 public class PartyListActivity extends Activity
 {
@@ -40,6 +42,13 @@ public class PartyListActivity extends Activity
         listParties = (ListView)findViewById(R.id.listParties);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         listParties.setAdapter(adapter);
+
+        Spinner spinnerMethods = (Spinner) findViewById(R.id.spinnerMethods);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+        		this, R.array.methods_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMethods.setAdapter(adapter);
+        spinnerMethods.setOnItemSelectedListener(new OnMethodItemSelectedListener());
 
 		buttonCalculate.setOnClickListener(new OnClickListener() {
 			
