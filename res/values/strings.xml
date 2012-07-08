@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, mainActivity!</string>
     <string name="app_name">ElectoralCalculator</string>
     <string name="txtvwParty">Party</string>
     <string name="txtvwVotes">Votes</string>
@@ -15,7 +14,6 @@
 	<string name="toastSeatsEmpty">The number of seats is a required value!</string>
 	<string name="toastVotesMapEmpty">There should be at least one party!</string>
 	<string name="twoDecimalFormat">#.##</string>
-	<string name="txtvwResults">This is the results view</string>
 	<string name="spinnerMethods_prompt">Choose a method</string>
 	<string-array name="methods_array">
         <item>D\'Hondt</item>

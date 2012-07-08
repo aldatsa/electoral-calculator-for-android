@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hola Mundo, mainActivity!</string>
     <string name="app_name">Calculadora electoral</string>
     <string name="txtvwParty">Partido</string>
     <string name="txtvwVotes">Votos</string>
@@ -15,7 +14,6 @@
 	<string name="toastSeatsEmpty">El número de escaños es obligatorio!</string>
 	<string name="toastVotesMapEmpty">Debe de haber por lo menos un partido!</string>
 	<string name="twoDecimalFormat">#.##</string>
-	<string name="txtvwResults">Esta es la vista de resultados</string>
 	<string name="spinnerMethods_prompt">Elige un método</string>
 	<string-array name="methods_array">
         <item>D\'Hondt</item>

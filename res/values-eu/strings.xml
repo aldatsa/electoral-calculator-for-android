@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Kaixo Mundua, mainActivity!</string>
     <string name="app_name">Hauteskunde kalkulagailua</string>
     <string name="txtvwParty">Alderdia</string>
     <string name="txtvwVotes">Botuak</string>
@@ -15,7 +14,6 @@
 	<string name="toastSeatsEmpty">Ahulki kopurua derrigorrezkoa da!</string>
 	<string name="toastVotesMapEmpty">Gutxienez alderdi bat egon behar du!</string>
 	<string name="twoDecimalFormat">#.##</string>
-	<string name="txtvwResults">Hau emaitzen ikuspegia da</string>
 	<string name="spinnerMethods_prompt">Aukeratu metodo bat</string>
 	<string-array name="methods_array">
         <item>D\'Hondt</item>
