@@ -5,6 +5,7 @@
     <string name="txtvwParty">Party</string>
     <string name="txtvwVotes">Votes</string>
     <string name="buttonAddParty">Add party</string>
+    <string name="buttonContinue">Continue</string>
     <string name="txtvwSeats">Seats</string>
     <string name="buttonCalculate">Calculate</string>
     <string name="txtvwPartyList">Party list:</string>

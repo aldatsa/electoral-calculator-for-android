@@ -1,6 +1,5 @@
 package android.ElectoralCalculator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,6 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,10 +22,6 @@ public class PartyListActivity extends Activity
 	
 	EditText editSeats;
 	Button buttonCalculate;
-
-	ListView listParties;
-	public static ArrayList<String> listItems = new ArrayList<String>();
-	public static ArrayAdapter<String> adapter;
 	
 	private static String method = "D'Hondt";
 	
@@ -50,10 +44,6 @@ public class PartyListActivity extends Activity
 		editSeats = (EditText)findViewById(R.id.editSeats);
 		
 		buttonCalculate = (Button)findViewById(R.id.buttonCalculate);
-
-        listParties = (ListView)findViewById(R.id.listParties);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
-        listParties.setAdapter(adapter);
 
         Spinner spinnerMethods = (Spinner) findViewById(R.id.spinnerMethods);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

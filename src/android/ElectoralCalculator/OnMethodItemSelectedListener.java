@@ -15,7 +15,7 @@ public class OnMethodItemSelectedListener implements OnItemSelectedListener
 			PartyListActivity.getCalculationMethod(), Toast.LENGTH_LONG).show();
 	}
 	
-	public void onNothingSelected(AdapterView parent)
+	public void onNothingSelected(AdapterView<?> parent)
 	{
 		// Do nothing
 	}

@@ -32,4 +32,22 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/buttonAddParty" />
+
+    <Button
+        android:id="@+id/buttonContinue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonContinue" />
+
+    <TextView
+        android:id="@+id/txtvwPartyList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtvwPartyList" />
+
+    <ListView
+        android:id="@+id/listParties"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
 </LinearLayout>
