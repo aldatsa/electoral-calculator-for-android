@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Kaixo Mundua, mainActivity!</string>
+    <string name="app_name">Hauteskunde kalkulagailua</string>
+    <string name="txtvwParty">Alderdia</string>
+    <string name="txtvwVotes">Botuak</string>
+    <string name="buttonAddParty">Gehitu alderdia</string>
+    <string name="buttonContinue">Jarraitu</string>
+    <string name="txtvwSeats">Ahulkiak</string>
+    <string name="buttonCalculate">Kalkulatu</string>
+    <string name="txtvwPartyList">Alderdi zerrenda:</string>
+	<string name="toastPartyVotesEmpty">Alderdiaren izena eta botu kopurua derrigorrezkoak dira!</string>
+	<string name="toastPartyEmpty">Alderdiaren izena derrigorrezkoa da!</string>
+	<string name="toastVotesEmpty">Botu kopurua derrigorrezkoa da!</string>
+	<string name="toastSeatsEmpty">Ahulki kopurua derrigorrezkoa da!</string>
+	<string name="toastVotesMapEmpty">Gutxienez alderdi bat egon behar du!</string>
+	<string name="twoDecimalFormat">#.##</string>
+	<string name="txtvwResults">Hau emaitzen ikuspegia da</string>
+	<string name="spinnerMethods_prompt">Aukeratu metodo bat</string>
+	<string-array name="methods_array">
+        <item>D\'Hondt</item>
+        <item>Sainte-Laguë</item>
+        <item>Aldatutako Sainte-Laguë</item>
+        <item>Imperiali</item>
+        <item>Hare quota</item>
+        <item>Droop quota</item>
+    </string-array>
+</resources>
