@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name=".PartyListActivity">
+            android:name=".OptionsActivity">
         </activity>
         <activity 
             android:name=".ResultActivity">

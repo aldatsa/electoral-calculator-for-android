@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
-public class PartyListActivity extends Activity
+public class OptionsActivity extends Activity
 {
 	int seats;
 	
@@ -139,7 +139,7 @@ public class PartyListActivity extends Activity
 			
 		}
 		
-		Intent intent = new Intent(PartyListActivity.this, ResultActivity.class);
+		Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
 		startActivity(intent);
 		
 		//listItems.clear();
