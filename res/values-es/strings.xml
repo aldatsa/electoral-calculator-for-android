@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hola Mundo, mainActivity!</string>
+    <string name="app_name">Calculadora electoral</string>
+    <string name="txtvwParty">Partido</string>
+    <string name="txtvwVotes">Votos</string>
+    <string name="buttonAddParty">Añadir partido</string>
+    <string name="buttonContinue">Continuar</string>
+    <string name="txtvwSeats">Escaños</string>
+    <string name="buttonCalculate">Calcular</string>
+    <string name="txtvwPartyList">Lista de partidos:</string>
+	<string name="toastPartyVotesEmpty">El nombre del partido y el número de votos son obligatorios!</string>
+	<string name="toastPartyEmpty">El nombre del partido es obligatorio!</string>
+	<string name="toastVotesEmpty">El número de votos es obligatorio!</string>
+	<string name="toastSeatsEmpty">El número de escaños es obligatorio!</string>
+	<string name="toastVotesMapEmpty">Debe de haber por lo menos un partido!</string>
+	<string name="twoDecimalFormat">#.##</string>
+	<string name="txtvwResults">Esta es la vista de resultados</string>
+	<string name="spinnerMethods_prompt">Elige un método</string>
+	<string-array name="methods_array">
+        <item>D\'Hondt</item>
+        <item>Sainte-Laguë</item>
+        <item>Sainte-Laguë modificado</item>
+        <item>Imperiali</item>
+        <item>Hare quota</item>
+        <item>Droop quota</item>
+    </string-array>
+</resources>
