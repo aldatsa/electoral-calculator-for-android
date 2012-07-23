@@ -23,5 +23,11 @@
         <item>Hare quota</item>
         <item>Droop quota</item>
     </string-array>
+	<string name="about_title">About Electoral Calculator</string>
+	<string name="about_text">\
+	Author: Asier Iturralde Sarasola
+	Web: https://launchpad.net/electoral-calculator-for-android
+	License: GNU GPL version 3
+	</string>
 	
 </resources>

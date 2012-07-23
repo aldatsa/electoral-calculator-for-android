@@ -24,6 +24,11 @@
         <activity 
             android:name=".ResultActivity">
         </activity>
+        <activity 
+            android:name=".About"
+            android:label="@string/about_title"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
     </application>
 
 </manifest>
