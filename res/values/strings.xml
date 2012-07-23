@@ -25,8 +25,9 @@
     </string-array>
 	<string name="about_title">About Electoral Calculator</string>
 	<string name="about_text">\
-	Author: Asier Iturralde Sarasola
-	Web: https://launchpad.net/electoral-calculator-for-android
+	Electoral Calculator for Android is a free electoral result calculator for the Android platform\n\n
+	Author: Asier Iturralde Sarasola\n
+	Web: https://launchpad.net/electoral-calculator-for-android\n
 	License: GNU GPL version 3
 	</string>
 	<string name="about_label">About&#8230;</string>
