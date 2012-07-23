@@ -23,4 +23,12 @@
         <item>Hare quota</item>
         <item>Droop quota</item>
     </string-array>
+	<string name="about_title">Sobre Calculadora electoral</string>
+	<string name="about_text">\
+	La Calculadora electoral para Android es software libre\n\n
+	Autor: Asier Iturralde Sarasola\n
+	Pagina web: https://launchpad.net/electoral-calculator-for-android\n
+	Licencia: GNU GPL version 3
+	</string>
+	<string name="about_label">About&#8230;</string>
 </resources>

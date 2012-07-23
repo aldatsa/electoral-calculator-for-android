@@ -23,4 +23,12 @@
         <item>Hare quota</item>
         <item>Droop quota</item>
     </string-array>
+   	<string name="about_title">Hauteskunde kalkulagailuari buruz</string>
+	<string name="about_text">\
+	Androiderako Hauteskunde kalkulagailua software librea da\n\n
+	Egilea: Asier Iturralde Sarasola\n
+	Webgunea: https://launchpad.net/electoral-calculator-for-android\n
+	Lizentzia: GNU GPL version 3
+	</string>
+	<string name="about_label">Honi buruz&#8230;</string>
 </resources>
