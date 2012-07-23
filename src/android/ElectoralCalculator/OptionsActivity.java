@@ -14,7 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 public class OptionsActivity extends Activity
 {
@@ -150,5 +152,22 @@ public class OptionsActivity extends Activity
 		}
 		*/
 		//adapter.notifyDataSetChanged();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	super.onCreateOptionsMenu(menu);
+    	MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.menu, menu);
+    	return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+    	case R.id.about_menu:
+    		startActivity(new Intent(this, About.class));
+    		return true;
+    	// More items go here (if any) ...
+    	}
+    	return false;
     }
 }
