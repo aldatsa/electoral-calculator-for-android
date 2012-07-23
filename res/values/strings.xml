@@ -29,5 +29,6 @@
 	Web: https://launchpad.net/electoral-calculator-for-android
 	License: GNU GPL version 3
 	</string>
+	<string name="about_label">About&#8230;</string>
 	
 </resources>
