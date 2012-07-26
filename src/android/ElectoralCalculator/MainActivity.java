@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -67,66 +65,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
-				String strNewParty = editParty.getText().toString();
-				String strNewVotes = editVotes.getText().toString();
-				
-				/* If editParty and editVotes are not empty,
-				 * then add the party to the map and to the arraylist
-				 * and notify the adapter that there is new data
-				 */
-				if (strNewParty.length() > 0 && strNewVotes.length() > 0)
-				{
-					votes.put(strNewParty, Integer.parseInt(strNewVotes));
-				
-					listItems.add(strNewParty + ": " + strNewVotes);
-					//PartyListActivity.adapter.notifyDataSetChanged();
-					
-					// Clean the EditTexts
-					editParty.setText("");
-					editVotes.setText("");
-					
-					editParty.requestFocus();
-					
-					//Intent intent = new Intent(MainActivity.this, PartyListActivity.class);
-					//startActivity(intent);
-				}
-				/* Else if both EditTexts are empty
-				 * use a toast notification to warn the user
-				 */
-				else if (strNewParty.length() == 0 && strNewVotes.length() == 0)
-				{
-					Context context = getApplicationContext();
-					CharSequence text = getString(R.string.toastPartyVotesEmpty);
-					int duration = Toast.LENGTH_SHORT;
-					
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
-				}
-				/* Else if editParty is empty
-				 * use a toast notification to warn the user
-				 */
-				else if (strNewParty.length() == 0)
-				{
-					Context context = getApplicationContext();
-					CharSequence text = getString(R.string.toastPartyEmpty);
-					int duration = Toast.LENGTH_SHORT;
-					
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
-				}
-				/* Else if editVotes is empty
-				 * use a toast notification to warn the user
-				 */
-				else if (strNewVotes.length() == 0)
-				{
-					Context context = getApplicationContext();
-					CharSequence text = getString(R.string.toastVotesEmpty);
-					int duration = Toast.LENGTH_SHORT;
-					
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
-				}
+				Intent intent = new Intent(MainActivity.this, AddParty.class);
+				startActivity(intent);
 			}
 		});
     }

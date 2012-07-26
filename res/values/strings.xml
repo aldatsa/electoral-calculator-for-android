@@ -31,5 +31,7 @@
 	License: GNU GPL version 3
 	</string>
 	<string name="about_label">About&#8230;</string>
-	
+	<string name="addparty_title">Add party</string>
+	<string name="accept">Accept</string>
+	<string name="cancel">Cancel</string>
 </resources>

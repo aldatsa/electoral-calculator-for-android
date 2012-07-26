@@ -29,6 +29,11 @@
             android:label="@string/about_title"
             android:theme="@android:style/Theme.Dialog">
         </activity>
+        <activity 
+            android:name=".AddParty"
+            android:label="@string/addparty_title"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
     </application>
 
 </manifest>
