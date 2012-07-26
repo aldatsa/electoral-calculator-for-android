@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,8 +19,6 @@ import android.view.MenuItem;
 public class MainActivity extends Activity {
 
 	//TextView textView1;
-	EditText editParty;
-	EditText editVotes;
 	
 	Button buttonContinue;
 	Button buttonAddParty;
@@ -41,8 +38,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         
         //textView1 = (TextView)findViewById(R.id.textView1);
-        editParty = (EditText)findViewById(R.id.editParty);
-        editVotes = (EditText)findViewById(R.id.editVotes);
         
         listParties = (ListView)findViewById(R.id.listParties);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
