@@ -66,6 +66,11 @@ public class OptionsActivity extends Activity
 				 */
 				if (strSeats.length() > 0 && !MainActivity.votes.isEmpty())
 				{
+			        // Make sure that the hash map used for the results is empty
+			        MainActivity.results.clear();
+			        // and the total number of votes is 0
+			        MainActivity.totalVotes = 0;
+			        
 					seats = Integer.parseInt(strSeats);
 					calculateAndShow();
 				}
