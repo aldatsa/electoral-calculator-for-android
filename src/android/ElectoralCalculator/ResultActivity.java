@@ -53,7 +53,7 @@ public class ResultActivity extends Activity{
     public boolean onOptionsItemSelected(MenuItem item) {
     	switch (item.getItemId()) {
     	case R.id.about_menu:
-    		startActivity(new Intent(this, About.class));
+    		startActivity(new Intent(this, AboutActivity.class));
     		return true;
     	// More items go here (if any) ...
     	}
