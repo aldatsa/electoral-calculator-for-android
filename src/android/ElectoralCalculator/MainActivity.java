@@ -19,8 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
-
-	//TextView textView1;
 	
 	Button buttonContinue;
 	Button buttonAddParty;
@@ -38,8 +36,6 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        //textView1 = (TextView)findViewById(R.id.textView1);
         
         listParties = (ListView)findViewById(R.id.listParties);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);

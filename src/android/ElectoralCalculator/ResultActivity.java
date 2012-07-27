@@ -25,8 +25,6 @@ public class ResultActivity extends Activity{
 	{
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.results);
-        
-        textView1 = (TextView)findViewById(R.id.textView1);
      
         listResults = (ListView)findViewById(R.id.listResults);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
