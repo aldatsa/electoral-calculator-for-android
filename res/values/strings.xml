@@ -34,4 +34,5 @@
 	<string name="addparty_title">Add party</string>
 	<string name="accept">Accept</string>
 	<string name="cancel">Cancel</string>
+	<string name="toastPartyListEmpty">The list of parties is empty</string>
 </resources>

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -49,8 +51,17 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
-				startActivity(intent);
+				if (votes.isEmpty()) {
+    				Context context = getApplicationContext();
+    				CharSequence text = getString(R.string.toastPartyListEmpty);
+    				int duration = Toast.LENGTH_SHORT;
+    				
+    				Toast toast = Toast.makeText(context, text, duration);
+    				toast.show();
+				} else {
+					Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
+					startActivity(intent);
+				}
 			}
         });
         
