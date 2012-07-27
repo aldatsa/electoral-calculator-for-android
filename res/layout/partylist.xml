@@ -4,28 +4,39 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
-	<TextView
-        android:id="@+id/txtvwSeats"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txtvwSeats" />
 
-    <EditText
-        android:id="@+id/editSeats"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number" />
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:background="@color/background"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal" >
+	    
+	    <Button
+	        android:id="@+id/buttonAddParty"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="@string/buttonAddParty" />
+	
+	    <Button
+	        android:id="@+id/buttonContinue"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="@string/buttonContinue" />
+	    
+    </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinnerMethods"
+    <TextView
+        android:id="@+id/txtvwPartyList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:prompt="@string/spinnerMethods_prompt" />
+        android:text="@string/txtvwPartyList" />
 
-    <Button
-        android:id="@+id/buttonCalculate"
+    <ListView
+        android:id="@+id/listParties"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/buttonCalculate" /> 
+        android:layout_height="wrap_content" >
+    </ListView>
 </LinearLayout>

@@ -40,7 +40,7 @@ public class PartyListActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.partylist);
         
         listParties = (ListView)findViewById(R.id.listParties);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);

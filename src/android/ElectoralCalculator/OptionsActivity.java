@@ -41,7 +41,7 @@ public class OptionsActivity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.partylist);
+        setContentView(R.layout.options);
         
         // Edit text view for the number of seats
 		editSeats = (EditText)findViewById(R.id.editSeats);
