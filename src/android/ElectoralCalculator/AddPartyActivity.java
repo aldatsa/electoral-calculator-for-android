@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddParty extends Activity {
+public class AddPartyActivity extends Activity {
 	
 	EditText editParty;
 	EditText editVotes;
@@ -51,7 +51,7 @@ public class AddParty extends Activity {
     				
     				editParty.requestFocus();
     				
-    				Intent intent = new Intent(AddParty.this, PartyListActivity.class);
+    				Intent intent = new Intent(AddPartyActivity.this, PartyListActivity.class);
     				startActivity(intent);
     			}
     			/* Else if both EditTexts are empty

@@ -67,7 +67,7 @@ public class PartyListActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(PartyListActivity.this, AddParty.class);
+				Intent intent = new Intent(PartyListActivity.this, AddPartyActivity.class);
 				startActivity(intent);
 			}
 		});
