@@ -40,9 +40,9 @@ public class AddParty extends Activity {
     			 */
     			if (strNewParty.length() > 0 && strNewVotes.length() > 0)
     			{
-    				MainActivity.votes.put(strNewParty, Integer.parseInt(strNewVotes));
+    				PartyListActivity.votes.put(strNewParty, Integer.parseInt(strNewVotes));
     			
-    				MainActivity.listItems.add(strNewParty + ": " + strNewVotes);
+    				PartyListActivity.listItems.add(strNewParty + ": " + strNewVotes);
     				//PartyListActivity.adapter.notifyDataSetChanged();
     				
     				// Clean the EditTexts
@@ -51,7 +51,7 @@ public class AddParty extends Activity {
     				
     				editParty.requestFocus();
     				
-    				Intent intent = new Intent(AddParty.this, MainActivity.class);
+    				Intent intent = new Intent(AddParty.this, PartyListActivity.class);
     				startActivity(intent);
     			}
     			/* Else if both EditTexts are empty

@@ -30,9 +30,9 @@ public class ResultActivity extends Activity{
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         listResults.setAdapter(adapter);
         
-        for (String s: MainActivity.results.keySet())
+        for (String s: PartyListActivity.results.keySet())
 		{
-			listItems.add(s + " (" + MainActivity.votes.get(s) + " votes (" + roundTo2Decimals(((double) MainActivity.votes.get(s) / MainActivity.totalVotes) * 100) + "%))" + ": " + MainActivity.results.get(s) + " seats\n");
+			listItems.add(s + " (" + PartyListActivity.votes.get(s) + " votes (" + roundTo2Decimals(((double) PartyListActivity.votes.get(s) / PartyListActivity.totalVotes) * 100) + "%))" + ": " + PartyListActivity.results.get(s) + " seats\n");
 		}
         adapter.notifyDataSetChanged();
 	}

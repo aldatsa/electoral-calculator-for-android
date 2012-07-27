@@ -18,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class MainActivity extends Activity {
+public class PartyListActivity extends Activity {
 	
 	Button buttonContinue;
 	Button buttonAddParty;
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
     				Toast toast = Toast.makeText(context, text, duration);
     				toast.show();
 				} else {
-					Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
+					Intent intent = new Intent(PartyListActivity.this, OptionsActivity.class);
 					startActivity(intent);
 				}
 			}
@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, AddParty.class);
+				Intent intent = new Intent(PartyListActivity.this, AddParty.class);
 				startActivity(intent);
 			}
 		});

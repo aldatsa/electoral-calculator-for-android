@@ -64,12 +64,12 @@ public class OptionsActivity extends Activity
 				/* If EditSeats is not empty 
 				 * and there are elements in the votes Map 
 				 */
-				if (strSeats.length() > 0 && !MainActivity.votes.isEmpty())
+				if (strSeats.length() > 0 && !PartyListActivity.votes.isEmpty())
 				{
 			        // Make sure that the hash map used for the results is empty
-			        MainActivity.results.clear();
+			        PartyListActivity.results.clear();
 			        // and the total number of votes is 0
-			        MainActivity.totalVotes = 0;
+			        PartyListActivity.totalVotes = 0;
 			        
 					seats = Integer.parseInt(strSeats);
 					calculateAndShow();
@@ -83,7 +83,7 @@ public class OptionsActivity extends Activity
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
 				}
-				else if (MainActivity.votes.isEmpty())
+				else if (PartyListActivity.votes.isEmpty())
 				{
 					Context context = getApplicationContext();
 					CharSequence text = getString(R.string.toastVotesMapEmpty);
@@ -99,12 +99,12 @@ public class OptionsActivity extends Activity
     {
 		Map<String, int[]> dhondt = new HashMap<String, int[]>();
 		
-		for (String s: MainActivity.votes.keySet())
+		for (String s: PartyListActivity.votes.keySet())
 		{
-			int tempVotes = MainActivity.votes.get(s);
+			int tempVotes = PartyListActivity.votes.get(s);
 			int[] distributionFigures = new int[seats];
 			
-			MainActivity.totalVotes = MainActivity.totalVotes + tempVotes;
+			PartyListActivity.totalVotes = PartyListActivity.totalVotes + tempVotes;
 			
 			for (int i = 0; i < seats; i++)
 			{
@@ -113,9 +113,9 @@ public class OptionsActivity extends Activity
 			dhondt.put(s, distributionFigures);
 		}
 		
-		for (String s: MainActivity.votes.keySet())
+		for (String s: PartyListActivity.votes.keySet())
 		{
-			MainActivity.results.put(s, 0);
+			PartyListActivity.results.put(s, 0);
 		}
 		
 		for (int allocated = 0; allocated < seats; allocated++)
@@ -137,7 +137,7 @@ public class OptionsActivity extends Activity
 				}
 			}
 			
-			MainActivity.results.put(highestParty, MainActivity.results.get(highestParty) + 1);
+			PartyListActivity.results.put(highestParty, PartyListActivity.results.get(highestParty) + 1);
 			
 			int tempDistributionFigures[] = dhondt.get(highestParty);
 			System.arraycopy(tempDistributionFigures, 1, tempDistributionFigures, 0, (seats - 1));
