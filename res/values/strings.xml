@@ -35,4 +35,6 @@
 	<string name="accept">Accept</string>
 	<string name="cancel">Cancel</string>
 	<string name="toastPartyListEmpty">The list of parties is empty</string>
+	<string name="settings_label">Settings&#8230;</string>
+	<string name="default_method">Default method</string>
 </resources>
