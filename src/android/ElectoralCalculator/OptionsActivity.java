@@ -110,7 +110,7 @@ public class OptionsActivity extends Activity
     }
     public void calculateAndShow()
     {
-		Map<String, int[]> dhondt = new HashMap<String, int[]>();
+		Map<String, int[]> distributionFigures = new HashMap<String, int[]>();
 		
 		for (String s: PartyListActivity.votes.keySet())
 		{
@@ -118,7 +118,7 @@ public class OptionsActivity extends Activity
 			int tempVotes = PartyListActivity.votes.get(s);
 			
 			// Create an array for the distribution figures of the current party
-			int[] distributionFigures = new int[seats];
+			int[] tmpDistributionFigures = new int[seats];
 			
 			// Add the votes of the current party to totalVotes
 			PartyListActivity.totalVotes = PartyListActivity.totalVotes + tempVotes;
@@ -126,11 +126,11 @@ public class OptionsActivity extends Activity
 			// Calculate the distribution figures for the current party
 			for (int i = 0; i < seats; i++)
 			{
-				distributionFigures[i] = tempVotes / (i + 1);
+				tmpDistributionFigures[i] = tempVotes / (i + 1);
 			}
 			
 			// Put the calculated distribution figures in the dhondt hash map 
-			dhondt.put(s, distributionFigures);
+			distributionFigures.put(s, tmpDistributionFigures);
 		}
 		
 		for (String s: PartyListActivity.votes.keySet())
@@ -144,11 +144,11 @@ public class OptionsActivity extends Activity
 			int highest = 0;
 			String highestParty = "";
 			
-			for (String s: dhondt.keySet())
+			for (String s: distributionFigures.keySet())
 			{	
 				int next;
 				
-				next = dhondt.get(s)[0];
+				next = distributionFigures.get(s)[0];
 				
 				if (next > highest)
 				{
@@ -159,10 +159,10 @@ public class OptionsActivity extends Activity
 			
 			PartyListActivity.results.put(highestParty, PartyListActivity.results.get(highestParty) + 1);
 			
-			int tempDistributionFigures[] = dhondt.get(highestParty);
+			int tempDistributionFigures[] = distributionFigures.get(highestParty);
 			System.arraycopy(tempDistributionFigures, 1, tempDistributionFigures, 0, (seats - 1));
 			
-			dhondt.put(highestParty, tempDistributionFigures);			
+			distributionFigures.put(highestParty, tempDistributionFigures);			
 		}
 		
 		Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
