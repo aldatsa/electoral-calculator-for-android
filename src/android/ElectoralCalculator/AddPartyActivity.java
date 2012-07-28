@@ -15,7 +15,7 @@ public class AddPartyActivity extends Activity {
 	EditText editParty;
 	EditText editVotes;
 	Button buttonAddNewParty;
-	Button buttonCancelNewParty;
+	Button buttonCancelAddNewParty;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,5 +92,16 @@ public class AddPartyActivity extends Activity {
     			}
     		}
     	});
+    
+        buttonCancelAddNewParty = (Button)findViewById(R.id.buttonCancelAddNewParty);
+        
+        buttonCancelAddNewParty.setOnClickListener(new OnClickListener() {
+    		
+    		@Override
+    		public void onClick(View v) {
+				Intent intent = new Intent(AddPartyActivity.this, PartyListActivity.class);
+				startActivity(intent);
+    		}
+        });
 	}
 }
