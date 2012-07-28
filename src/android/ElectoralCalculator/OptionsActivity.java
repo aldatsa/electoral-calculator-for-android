@@ -135,23 +135,34 @@ public class OptionsActivity extends Activity
 			distributionFigures.put(s, tmpDistributionFigures);
 		}
 		
+		// Reset to 0 the seats of all the parties
 		for (String s: PartyListActivity.votes.keySet())
 		{
 			PartyListActivity.results.put(s, 0);
 		}
 		
+		// Variables to store the name and the votes of the
+		// most voted party in each round
+		double highest = 0.0;
+		String highestParty = "";
+		
+		// Allocate the seats that correspond to each party
 		for (int allocated = 0; allocated < seats; allocated++)
 		{
+			// Reset the temporal variables
+			highest = 0;
+			highestParty = "";
 			
-			double highest = 0;
-			String highestParty = "";
-			
+			// Find the highest value in this round
 			for (String s: distributionFigures.keySet())
 			{	
 				double next;
 				
+				// The next distribution figure of the current party
 				next = distributionFigures.get(s)[0];
 				
+				// If the distribution figure is bigger than the highest
+				// it becomes the new highest value/party
 				if (next > highest)
 				{
 					highest = next;
@@ -159,11 +170,24 @@ public class OptionsActivity extends Activity
 				}
 			}
 			
+			// Add one seat to the party that got the highest distribution figure in this round
 			PartyListActivity.results.put(highestParty, PartyListActivity.results.get(highestParty) + 1);
 			
-			double tempDistributionFigures[] = distributionFigures.get(highestParty);
+			// NOTE: To remove the highest distribution figure from the party that got the last seat
+			// I have to use arraycopy, as arrays are fixed in size in Java. 
+			// It would be better to use ListArrays
+			
+			// Copy the distribution figures of the party that got the highest distribution in this round
+			// to a temporal array
+			double[] tempDistributionFigures = distributionFigures.get(highestParty);
+			
+			// Use arraycopy to create a new array with the highest value removed
 			System.arraycopy(tempDistributionFigures, 1, tempDistributionFigures, 0, (seats - 1));
 			
+			// Substitute the last value with 0, else is equal to the previous value in the array
+			tempDistributionFigures[seats - 1] = 0.0;
+			
+			// Put the modified array back in the distributionFigures array
 			distributionFigures.put(highestParty, tempDistributionFigures);			
 		}
 		
