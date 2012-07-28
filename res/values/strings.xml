@@ -36,5 +36,6 @@
 	<string name="cancel">Cancel</string>
 	<string name="toastPartyListEmpty">The list of parties is empty</string>
 	<string name="settings_label">Settings&#8230;</string>
-	<string name="default_method">Default method</string>
+	<string name="default_method_label">Default method</string>
+	<string name="default_method_summary">Select the method used by default</string>
 </resources>
