@@ -114,15 +114,22 @@ public class OptionsActivity extends Activity
 		
 		for (String s: PartyListActivity.votes.keySet())
 		{
+			// Get the number of votes of the current party
 			int tempVotes = PartyListActivity.votes.get(s);
+			
+			// Create an array for the distribution figures of the current party
 			int[] distributionFigures = new int[seats];
 			
+			// Add the votes of the current party to totalVotes
 			PartyListActivity.totalVotes = PartyListActivity.totalVotes + tempVotes;
 			
+			// Calculate the distribution figures for the current party
 			for (int i = 0; i < seats; i++)
 			{
-				distributionFigures[i] = tempVotes / (i +1);
+				distributionFigures[i] = tempVotes / (i + 1);
 			}
+			
+			// Put the calculated distribution figures in the dhondt hash map 
 			dhondt.put(s, distributionFigures);
 		}
 		
