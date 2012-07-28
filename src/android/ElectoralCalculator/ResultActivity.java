@@ -53,6 +53,9 @@ public class ResultActivity extends Activity{
     	case R.id.about_menu:
     		startActivity(new Intent(this, AboutActivity.class));
     		return true;
+    	case R.id.settings_menu:
+    		startActivity(new Intent(this, PreferencesActivity.class));
+    		return true;
     	// More items go here (if any) ...
     	}
     	return false;
