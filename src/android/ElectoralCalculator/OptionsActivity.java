@@ -126,7 +126,9 @@ public class OptionsActivity extends Activity
 			// Calculate the distribution figures for the current party
 			for (int i = 0; i < seats; i++)
 			{
-				tmpDistributionFigures[i] = tempVotes / (i + 1);
+				// tempVotes and i are ints, I use 1.0 to make sure that the result
+				// of the division is a double
+				tmpDistributionFigures[i] = tempVotes / (i + 1.0); 
 			}
 			
 			// Put the calculated distribution figures in the dhondt hash map 
