@@ -110,7 +110,7 @@ public class OptionsActivity extends Activity
     }
     public void calculateAndShow()
     {
-		Map<String, int[]> distributionFigures = new HashMap<String, int[]>();
+		Map<String, double[]> distributionFigures = new HashMap<String, double[]>();
 		
 		for (String s: PartyListActivity.votes.keySet())
 		{
@@ -118,7 +118,7 @@ public class OptionsActivity extends Activity
 			int tempVotes = PartyListActivity.votes.get(s);
 			
 			// Create an array for the distribution figures of the current party
-			int[] tmpDistributionFigures = new int[seats];
+			double[] tmpDistributionFigures = new double[seats];
 			
 			// Add the votes of the current party to totalVotes
 			PartyListActivity.totalVotes = PartyListActivity.totalVotes + tempVotes;
@@ -141,12 +141,12 @@ public class OptionsActivity extends Activity
 		for (int allocated = 0; allocated < seats; allocated++)
 		{
 			
-			int highest = 0;
+			double highest = 0;
 			String highestParty = "";
 			
 			for (String s: distributionFigures.keySet())
 			{	
-				int next;
+				double next;
 				
 				next = distributionFigures.get(s)[0];
 				
@@ -159,7 +159,7 @@ public class OptionsActivity extends Activity
 			
 			PartyListActivity.results.put(highestParty, PartyListActivity.results.get(highestParty) + 1);
 			
-			int tempDistributionFigures[] = distributionFigures.get(highestParty);
+			double tempDistributionFigures[] = distributionFigures.get(highestParty);
 			System.arraycopy(tempDistributionFigures, 1, tempDistributionFigures, 0, (seats - 1));
 			
 			distributionFigures.put(highestParty, tempDistributionFigures);			
