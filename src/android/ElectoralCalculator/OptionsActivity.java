@@ -94,7 +94,7 @@ public class OptionsActivity extends Activity
 				}
 				/*
 				 * else if the list of parties (name -> votes) is empty show a toast
-				 * IT SHOULD GO BACK TO PARTYLISTACTIVITY!!
+				 * and go back to PartyListActivity
 				 */
 				else if (PartyListActivity.votes.isEmpty())
 				{
@@ -104,6 +104,9 @@ public class OptionsActivity extends Activity
 					
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
+					
+					Intent intent = new Intent(OptionsActivity.this, PartyListActivity.class);
+					startActivity(intent);
 				}
 			}
 		});
@@ -131,7 +134,7 @@ public class OptionsActivity extends Activity
 				tmpDistributionFigures[i] = tempVotes / (i + 1.0); 
 			}
 			
-			// Put the calculated distribution figures in the dhondt hash map 
+			// Put the calculated distribution figures in the distributionFigures hash map 
 			distributionFigures.put(s, tmpDistributionFigures);
 		}
 		
