@@ -25,14 +25,14 @@ public class OptionsActivity extends Activity
 	EditText editSeats;
 	Button buttonCalculate;
 	
-	private static String method = "D'Hondt";
+	private static Methods method = Methods.DHONDT;
 	
-	public static String getCalculationMethod()
+	public static Methods getCalculationMethod()
 	{
 		return method;
 	}
 	
-	public static void setCalculationMethod(String calculationMethod)
+	public static void setCalculationMethod(Methods calculationMethod)
 	{
 		method = calculationMethod;
 	}
@@ -122,8 +122,8 @@ public class OptionsActivity extends Activity
 		});
     }
 
-    private int  getDivisor(int numSeats, String method) {
-    	if (method.equals("D'Hondt")) {
+    private int  getDivisor(int numSeats, Methods method) {
+    	if (method.equals(Methods.DHONDT)) {
     		return numSeats + 1;
     	} else {
     		return -1; // ERROR: Unknown method
