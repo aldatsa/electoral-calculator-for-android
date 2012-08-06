@@ -38,6 +38,7 @@ public class ResultActivity extends Activity{
 	private double roundTo2Decimals(double d)
     {
     	DecimalFormat twoDForm = new DecimalFormat(getString(R.string.twoDecimalFormat)); // #.## or #,##
+    	double tmp = Double.valueOf(twoDForm.format(d));
     	return Double.valueOf(twoDForm.format(d));
     }
     @Override

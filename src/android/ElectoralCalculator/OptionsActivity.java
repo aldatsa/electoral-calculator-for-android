@@ -37,6 +37,13 @@ public class OptionsActivity extends Activity
 		method = calculationMethod;
 	}
 	
+	private int calculateTotalVotes() {
+		int tmpTotalVotes = 0;
+		for (String s: PartyListActivity.votes.keySet()) {
+			tmpTotalVotes = tmpTotalVotes + PartyListActivity.votes.get(s);
+		}
+		return tmpTotalVotes;
+	}
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,9 @@ public class OptionsActivity extends Activity
 			        // Get the number of seats
 					seats = Integer.parseInt(strSeats);
 					
+					// Calculate total votes
+					PartyListActivity.totalVotes = calculateTotalVotes();
+					
 					// Calculate and show the results
 					calculateAndShow();
 				}
@@ -111,89 +121,82 @@ public class OptionsActivity extends Activity
 			}
 		});
     }
+
+    private int  getDivisor(int numSeats, String method) {
+    	if (method.equals("D'Hondt")) {
+    		return numSeats + 1;
+    	} else {
+    		return -1; // ERROR: Unknown method
+    	}
+    }
+
     public void calculateAndShow()
     {
-		Map<String, double[]> distributionFigures = new HashMap<String, double[]>();
+    	double highest = 0.0;
+    	String seatTo = "";
+    	Map<String, Double> lastQuot = new HashMap<String, Double>();
+    	Map<String, Integer> nextSeat = new HashMap<String, Integer>();
+    	
+		//Map<String, Integer> results = new HashMap<String, Integer>();
 		
+    	// Clear the hash map results
+    	PartyListActivity.results.clear();
+    	
+		// Initialize the results hash map for the parties in votes
 		for (String s: PartyListActivity.votes.keySet())
 		{
-			// Get the number of votes of the current party
-			int tempVotes = PartyListActivity.votes.get(s);
-			
-			// Create an array for the distribution figures of the current party
-			double[] tmpDistributionFigures = new double[seats];
-			
-			// Add the votes of the current party to totalVotes
-			PartyListActivity.totalVotes = PartyListActivity.totalVotes + tempVotes;
-			
-			// Calculate the distribution figures for the current party
-			for (int i = 0; i < seats; i++)
-			{
-				// tempVotes and i are ints, I use 1.0 to make sure that the result
-				// of the division is a double
-				tmpDistributionFigures[i] = tempVotes / (i + 1.0); 
-			}
-			
-			// Put the calculated distribution figures in the distributionFigures hash map 
-			distributionFigures.put(s, tmpDistributionFigures);
-		}
-		
-		// Reset to 0 the seats of all the parties
-		for (String s: PartyListActivity.votes.keySet())
-		{
+			// They start with 0 seats each
 			PartyListActivity.results.put(s, 0);
 		}
 		
-		// Variables to store the name and the votes of the
-		// most voted party in each round
-		double highest = 0.0;
-		String highestParty = "";
-		
-		// Allocate the seats that correspond to each party
-		for (int allocated = 0; allocated < seats; allocated++)
-		{
-			// Reset the temporal variables
-			highest = 0;
-			highestParty = "";
+		// Calculate the number of seats for each party
+		for (int i = 1; i <= seats; i++) {
+			// Highest value in this round (reset it to 0 in each round)
+			highest = 0.0;
 			
-			// Find the highest value in this round
-			for (String s: distributionFigures.keySet())
-			{	
-				double next;
+			// Who gets the seat in this round (reset it to "" in each round)
+			seatTo = "";
+			
+			for (String s: PartyListActivity.votes.keySet()) {
+				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
+				// Calculate the quot for this party in this round
+				double quot = PartyListActivity.votes.get(s).doubleValue() / getDivisor(PartyListActivity.results.get(s), method);
 				
-				// The next distribution figure of the current party
-				next = distributionFigures.get(s)[0];
+				// If the quot is bigger than the highest value in this round
+				if (quot > highest) {
+					// the party becomes the candidate to get this seat
+					seatTo = s;
+					// Save the quot to check it with the values for the rest of parties
+					highest = quot;
+				// else if the quot is equal to the highest value in this round
+				} else if (quot == highest) {
+					// The seat goes to the party that has more votes
+					if (PartyListActivity.votes.get(s) > PartyListActivity.votes.get(seatTo)) {
+						seatTo = s;
+						highest = quot;
+					}
+				}
 				
-				// If the distribution figure is bigger than the highest
-				// it becomes the new highest value/party
-				if (next > highest)
-				{
-					highest = next;
-					highestParty = s;
+				// Save the last quots to calculate the number of extra votes needed to get the last seat
+				if (i == seats) {
+					lastQuot.put(s, quot);
 				}
 			}
-			
-			// Add one seat to the party that got the highest distribution figure in this round
-			PartyListActivity.results.put(highestParty, PartyListActivity.results.get(highestParty) + 1);
-			
-			// NOTE: To remove the highest distribution figure from the party that got the last seat
-			// I have to use arraycopy, as arrays are fixed in size in Java. 
-			// It would be better to use ListArrays
-			
-			// Copy the distribution figures of the party that got the highest distribution in this round
-			// to a temporal array
-			double[] tempDistributionFigures = distributionFigures.get(highestParty);
-			
-			// Use arraycopy to create a new array with the highest value removed
-			System.arraycopy(tempDistributionFigures, 1, tempDistributionFigures, 0, (seats - 1));
-			
-			// Substitute the last value with 0, else is equal to the previous value in the array
-			tempDistributionFigures[seats - 1] = 0.0;
-			
-			// Put the modified array back in the distributionFigures array
-			distributionFigures.put(highestParty, tempDistributionFigures);			
+			// The party with the highest quot gets another seat
+			PartyListActivity.results.put(seatTo, PartyListActivity.results.get(seatTo) + 1);
 		}
 		
+		/* TODO: Complete this
+		for (String s: PartyListActivity.votes.keySet()) {
+			// The party that got the last seat needs 0 votes to get the last seat
+			if (s == seatTo) {
+				nextSeat.put(s, 0);
+			// The rest of parties need to get a bigger quot than the party that got the last seat
+			} else {
+				nextSeat.put(s, );
+			}
+		}
+		*/
 		Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
 		startActivity(intent);
 		
