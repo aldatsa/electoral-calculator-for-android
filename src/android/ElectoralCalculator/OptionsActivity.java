@@ -16,9 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class OptionsActivity extends Activity
-{
-	public int seats;
-	
+{	
 	EditText editSeats;
 	Button buttonCalculate;
 	
@@ -67,13 +65,13 @@ public class OptionsActivity extends Activity
 			        PartyListActivity.totalVotes = 0;
 			        
 			        // Get the number of seats
-					seats = Integer.parseInt(strSeats);
+					Data.seats = Integer.parseInt(strSeats);
 					
 					// Calculate total votes
 					PartyListActivity.totalVotes = calculateTotalVotes();
 					
 					// Calculate and show the results
-					PartyListActivity.results = Methods.calculateHighestAverage(seats, Data.votes);
+					PartyListActivity.results = Methods.calculateHighestAverage(Data.seats, Data.votes);
 					
 					// Launch ResultActivity to show the results
 					Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
