@@ -60,7 +60,7 @@ public class OptionsActivity extends Activity
 				if (strSeats.length() > 0 && !Data.votes.isEmpty())
 				{
 			        // Make sure that the hash map used for the results is empty
-			        PartyListActivity.results.clear();
+			        Data.results.clear();
 			        // and the total number of votes is 0
 			        PartyListActivity.totalVotes = 0;
 			        
@@ -71,7 +71,7 @@ public class OptionsActivity extends Activity
 					PartyListActivity.totalVotes = calculateTotalVotes();
 					
 					// Calculate and show the results
-					PartyListActivity.results = Methods.calculateHighestAverage(Data.seats, Data.votes);
+					Data.results = Methods.calculateHighestAverage(Data.seats, Data.votes);
 					
 					// Launch ResultActivity to show the results
 					Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
