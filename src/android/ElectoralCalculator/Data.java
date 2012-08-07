@@ -15,4 +15,12 @@ public class Data {
 	
 	// Used to store the results (name of the party -> number of seats)
 	public static Map<String, Integer> results = new HashMap<String, Integer>();
+	
+	public static int calculateTotalVotes() {
+		int tmpTotalVotes = 0;
+		for (String s: Data.votes.keySet()) {
+			tmpTotalVotes = tmpTotalVotes + Data.votes.get(s);
+		}
+		return tmpTotalVotes;
+	}
 }

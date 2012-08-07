@@ -20,13 +20,6 @@ public class OptionsActivity extends Activity
 	EditText editSeats;
 	Button buttonCalculate;
 	
-	private int calculateTotalVotes() {
-		int tmpTotalVotes = 0;
-		for (String s: Data.votes.keySet()) {
-			tmpTotalVotes = tmpTotalVotes + Data.votes.get(s);
-		}
-		return tmpTotalVotes;
-	}
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +61,7 @@ public class OptionsActivity extends Activity
 					Data.seats = Integer.parseInt(strSeats);
 					
 					// Calculate total votes
-					Data.totalVotes = calculateTotalVotes();
+					Data.totalVotes = Data.calculateTotalVotes();
 					
 					// Calculate and show the results
 					Data.results = Methods.calculateHighestAverage(Data.seats, Data.votes);
