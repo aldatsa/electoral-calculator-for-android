@@ -140,7 +140,7 @@ public class OptionsActivity extends Activity
 			for (String s: PartyListActivity.votes.keySet()) {
 				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
 				// Calculate the quot for this party in this round
-				double quot = PartyListActivity.votes.get(s).doubleValue() / Methods.getDivisor(PartyListActivity.results.get(s), Methods.getCalculationMethod());
+				double quot = PartyListActivity.votes.get(s).doubleValue() / Methods.getDivisor(PartyListActivity.results.get(s));
 				
 				// If the quot is bigger than the highest value in this round
 				if (quot > highest) {

@@ -17,7 +17,7 @@ public enum Methods {
 		method = calculationMethod;
 	}
 	
-    public static double  getDivisor(Integer numSeats, Methods method) {
+    public static double  getDivisor(Integer numSeats) {
     	if (method.equals(DHONDT)) {
     		return numSeats + 1;
     	} else if (method.equals(SAINTE_LAGUE)){
