@@ -10,6 +10,14 @@ public enum Methods {
 	
 	private static double MSLFD = 1.4;
 	
+	public static double getMSLFD() {
+		return MSLFD;
+	}
+	
+	public static void setMSLFD(double value) {
+		MSLFD = value;
+	}
+	
 	public static Methods getCalculationMethod()
 	{
 		return method;

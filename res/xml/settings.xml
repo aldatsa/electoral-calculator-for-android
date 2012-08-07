@@ -9,7 +9,7 @@
         android:entries="@array/methods"
         android:entryValues="@array/methods_values" />
 	<EditTextPreference
-	    android:key="editTextMSLFD"
+	    android:key="MSLFDpref"
         android:summary="Enter the value of the first divisor"
         android:defaultValue="1.4"
         android:title="Modified Sainte-Laguë"
