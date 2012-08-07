@@ -30,7 +30,7 @@ public class ResultActivity extends Activity{
         
         for (String s: PartyListActivity.results.keySet())
 		{
-			listItems.add(s + " (" + PartyListActivity.votes.get(s) + " votes (" + roundTo2Decimals(((double) PartyListActivity.votes.get(s) / PartyListActivity.totalVotes) * 100) + "%))" + ": " + PartyListActivity.results.get(s) + " seats\n");
+			listItems.add(s + " (" + Data.votes.get(s) + " votes (" + roundTo2Decimals(((double) Data.votes.get(s) / PartyListActivity.totalVotes) * 100) + "%))" + ": " + PartyListActivity.results.get(s) + " seats\n");
 		}
         adapter.notifyDataSetChanged();
 	}

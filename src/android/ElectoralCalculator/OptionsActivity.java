@@ -24,8 +24,8 @@ public class OptionsActivity extends Activity
 	
 	private int calculateTotalVotes() {
 		int tmpTotalVotes = 0;
-		for (String s: PartyListActivity.votes.keySet()) {
-			tmpTotalVotes = tmpTotalVotes + PartyListActivity.votes.get(s);
+		for (String s: Data.votes.keySet()) {
+			tmpTotalVotes = tmpTotalVotes + Data.votes.get(s);
 		}
 		return tmpTotalVotes;
 	}
@@ -59,7 +59,7 @@ public class OptionsActivity extends Activity
 				/* If EditSeats is not empty 
 				 * and there are elements in the votes Map 
 				 */
-				if (strSeats.length() > 0 && !PartyListActivity.votes.isEmpty())
+				if (strSeats.length() > 0 && !Data.votes.isEmpty())
 				{
 			        // Make sure that the hash map used for the results is empty
 			        PartyListActivity.results.clear();
@@ -73,7 +73,7 @@ public class OptionsActivity extends Activity
 					PartyListActivity.totalVotes = calculateTotalVotes();
 					
 					// Calculate and show the results
-					PartyListActivity.results = Methods.calculateHighestAverage(seats, PartyListActivity.votes);
+					PartyListActivity.results = Methods.calculateHighestAverage(seats, Data.votes);
 					
 					// Launch ResultActivity to show the results
 					Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
@@ -95,7 +95,7 @@ public class OptionsActivity extends Activity
 				 * else if the list of parties (name -> votes) is empty show a toast
 				 * and go back to PartyListActivity
 				 */
-				else if (PartyListActivity.votes.isEmpty())
+				else if (Data.votes.isEmpty())
 				{
 					Context context = getApplicationContext();
 					CharSequence text = getString(R.string.toastVotesMapEmpty);

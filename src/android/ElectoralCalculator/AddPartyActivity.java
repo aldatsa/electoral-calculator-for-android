@@ -40,7 +40,7 @@ public class AddPartyActivity extends Activity {
     			 */
     			if (strNewParty.length() > 0 && strNewVotes.length() > 0)
     			{
-    				PartyListActivity.votes.put(strNewParty, Integer.parseInt(strNewVotes));
+    				Data.votes.put(strNewParty, Integer.parseInt(strNewVotes));
     			
     				PartyListActivity.listItems.add(strNewParty + ": " + strNewVotes);
     				//PartyListActivity.adapter.notifyDataSetChanged();
