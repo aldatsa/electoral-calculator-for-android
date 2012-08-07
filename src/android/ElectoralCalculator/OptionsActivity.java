@@ -20,7 +20,7 @@ import android.view.MenuItem;
 
 public class OptionsActivity extends Activity
 {
-	int seats;
+	public int seats;
 	
 	EditText editSeats;
 	Button buttonCalculate;
