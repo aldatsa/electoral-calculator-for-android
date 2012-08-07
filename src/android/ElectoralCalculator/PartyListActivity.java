@@ -21,9 +21,6 @@ public class PartyListActivity extends Activity {
 	Button buttonContinue;
 	Button buttonAddParty;
 	
-	// Used to store the total number of votes
-	public static int totalVotes = 0;
-	
 	ListView listParties;
 	public static ArrayList<String> listItems = new ArrayList<String>();
 	public static ArrayAdapter<String> adapter;

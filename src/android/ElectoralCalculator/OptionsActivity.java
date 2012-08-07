@@ -62,13 +62,13 @@ public class OptionsActivity extends Activity
 			        // Make sure that the hash map used for the results is empty
 			        Data.results.clear();
 			        // and the total number of votes is 0
-			        PartyListActivity.totalVotes = 0;
+			        Data.totalVotes = 0;
 			        
 			        // Get the number of seats
 					Data.seats = Integer.parseInt(strSeats);
 					
 					// Calculate total votes
-					PartyListActivity.totalVotes = calculateTotalVotes();
+					Data.totalVotes = calculateTotalVotes();
 					
 					// Calculate and show the results
 					Data.results = Methods.calculateHighestAverage(Data.seats, Data.votes);
