@@ -14,4 +14,12 @@ public enum Methods {
 	{
 		method = calculationMethod;
 	}
+	
+    public static int  getDivisor(int numSeats, Methods method) {
+    	if (method.equals(Methods.DHONDT)) {
+    		return numSeats + 1;
+    	} else {
+    		return -1; // ERROR: Unknown method
+    	}
+    }
 }

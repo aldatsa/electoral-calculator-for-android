@@ -110,14 +110,6 @@ public class OptionsActivity extends Activity
 		});
     }
 
-    private int  getDivisor(int numSeats, Methods method) {
-    	if (method.equals(Methods.DHONDT)) {
-    		return numSeats + 1;
-    	} else {
-    		return -1; // ERROR: Unknown method
-    	}
-    }
-
     public void calculateAndShow()
     {
     	double highest = 0.0;
@@ -148,7 +140,7 @@ public class OptionsActivity extends Activity
 			for (String s: PartyListActivity.votes.keySet()) {
 				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
 				// Calculate the quot for this party in this round
-				double quot = PartyListActivity.votes.get(s).doubleValue() / getDivisor(PartyListActivity.results.get(s), Methods.getCalculationMethod());
+				double quot = PartyListActivity.votes.get(s).doubleValue() / Methods.getDivisor(PartyListActivity.results.get(s), Methods.getCalculationMethod());
 				
 				// If the quot is bigger than the highest value in this round
 				if (quot > highest) {
