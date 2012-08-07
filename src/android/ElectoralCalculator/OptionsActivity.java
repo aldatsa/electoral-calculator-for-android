@@ -25,18 +25,6 @@ public class OptionsActivity extends Activity
 	EditText editSeats;
 	Button buttonCalculate;
 	
-	private static Methods method = Methods.DHONDT;
-	
-	public static Methods getCalculationMethod()
-	{
-		return method;
-	}
-	
-	public static void setCalculationMethod(Methods calculationMethod)
-	{
-		method = calculationMethod;
-	}
-	
 	private int calculateTotalVotes() {
 		int tmpTotalVotes = 0;
 		for (String s: PartyListActivity.votes.keySet()) {
@@ -160,7 +148,7 @@ public class OptionsActivity extends Activity
 			for (String s: PartyListActivity.votes.keySet()) {
 				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
 				// Calculate the quot for this party in this round
-				double quot = PartyListActivity.votes.get(s).doubleValue() / getDivisor(PartyListActivity.results.get(s), method);
+				double quot = PartyListActivity.votes.get(s).doubleValue() / getDivisor(PartyListActivity.results.get(s), Methods.getCalculationMethod());
 				
 				// If the quot is bigger than the highest value in this round
 				if (quot > highest) {

@@ -9,10 +9,10 @@ public class OnMethodItemSelectedListener implements OnItemSelectedListener
 {	
 	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) 
 	{
-		OptionsActivity.setCalculationMethod(Methods.values()[pos]);
+		Methods.setCalculationMethod(Methods.values()[pos]);
 		
 		Toast.makeText(parent.getContext(), "The selected method is " +
-			OptionsActivity.getCalculationMethod(), Toast.LENGTH_LONG).show();
+			Methods.getCalculationMethod(), Toast.LENGTH_LONG).show();
 	}
 	
 	public void onNothingSelected(AdapterView<?> parent)
