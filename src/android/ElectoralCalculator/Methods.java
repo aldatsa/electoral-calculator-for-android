@@ -46,7 +46,14 @@ public enum Methods {
     	}
     }
     
-    public static Map<String, Integer> calculateHighestAverage(int seats, Map<String, Integer> votes) {
+    public static Map<String, Integer> calculate(int seats, Map<String, Integer> votes) {
+    	if (method.equals(DHONDT) || method.equals(SAINTE_LAGUE) || method.equals(MODIFIED_SAINTE_LAGUE) || method.equals(IMPERIALI)) {
+    		return calculateHighestAverage(seats, votes);
+    	} else { //if (method.equals(HARE_QUOTA) || method.equals(DROOP_QUOTA)){
+    		return calculateLargestRemainder(seats, votes);
+    	}
+    }
+    private static Map<String, Integer> calculateHighestAverage(int seats, Map<String, Integer> votes) {
     	double highest = 0.0;
     	String seatTo = "";
     	Map<String, Double> lastQuot = new HashMap<String, Double>();
@@ -111,5 +118,72 @@ public enum Methods {
 		}
 		*/
     }
-    
+
+    private static Map<String, Integer> calculateLargestRemainder(int numSeats, Map<String, Integer> votes) {
+    	Map<String, Integer> results = new HashMap<String, Integer>();
+    	Map<String, Double> remainder = new HashMap<String, Double>();
+    	Double quota = 0.0;
+    	int tempSeats = 0;
+    	double tempVQ = 0.0;
+    	
+    	/*
+    	 * The largest remainder method requires the numbers of votes for each party
+    	 * to be divided by a quota representing the number of votes required for a
+    	 * seat (i.e. usually the total number of votes cast divided by the number
+    	 * of seats, or some similar formula).
+    	 * The result for each party will usually consist of an integer part
+    	 * plus a fractional remainder. 
+    	 */
+
+    	// Calculate the quota for the current method
+    	if (method.equals(HARE_QUOTA)) {
+    		quota = ((double) Data.totalVotes / numSeats); // TODO: Should be validVotes instead of totalVotes
+    	} else if (method.equals(DROOP_QUOTA)) {
+    		quota = (1 + ((double) Data.totalVotes / (1 + numSeats))); // TODO: Should be validVotes instead of totalVotes
+    	} else {
+    		// ERROR: Not a valid method, show a toast?
+    	}
+    	
+    	/*
+    	 *  Each party is first allocated a number of seats equal to their integer. 
+    	 *  This will generally leave some seats unallocated.
+    	 */
+    	for (String party: votes.keySet()) {
+    		tempVQ = votes.get(party) / quota;
+    		results.put(party, (int)tempVQ);
+    		remainder.put(party, tempVQ - results.get(party));
+    		tempSeats = tempSeats + results.get(party);
+    	}
+    	
+    	/*
+    	 * The parties are then ranked on the basis of the fractional remainders,
+    	 * and the parties with the largest remainders are each allocated one
+    	 * additional seat until all the seats have been allocated.
+    	 * This gives the method its name.
+    	 */
+    	while (tempSeats < numSeats) {
+    		String tmpHighestRemainderParty = "";
+    		double tmpHighestRemainder = 0.0;
+    		Double currentRemainder = 0.0;
+    		
+    		// Find the highest remainder in this round
+    		for (String party: remainder.keySet()) {
+    			currentRemainder = remainder.get(party); 
+    			if (currentRemainder.compareTo(tmpHighestRemainder) > 0) {
+    				tmpHighestRemainder = currentRemainder;
+    				tmpHighestRemainderParty = party;
+    			}
+    		}
+    		
+    		// The highest remainder gets another seat
+    		results.put(tmpHighestRemainderParty, results.get(tmpHighestRemainderParty) + 1);
+    		
+    		// Add one to tempSeats
+    		tempSeats = tempSeats + 1;
+
+    		// Remove the highest remainder from the map
+    		remainder.remove(tmpHighestRemainderParty);
+    	}
+    	return results;
+    }
 }

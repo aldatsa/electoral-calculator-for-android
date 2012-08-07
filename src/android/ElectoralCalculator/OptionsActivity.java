@@ -64,7 +64,7 @@ public class OptionsActivity extends Activity
 					Data.totalVotes = Data.calculateTotalVotes();
 					
 					// Calculate and show the results
-					Data.results = Methods.calculateHighestAverage(Data.seats, Data.votes);
+					Data.results = Methods.calculate(Data.seats, Data.votes);
 					
 					// Launch ResultActivity to show the results
 					Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
