@@ -1,8 +1,5 @@
 package android.ElectoralCalculator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -76,7 +73,11 @@ public class OptionsActivity extends Activity
 					PartyListActivity.totalVotes = calculateTotalVotes();
 					
 					// Calculate and show the results
-					calculateAndShow();
+					PartyListActivity.results = Methods.calculateHighestAverage(seats, PartyListActivity.votes);
+					
+					// Launch ResultActivity to show the results
+					Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
+					startActivity(intent);
 				}
 				/*
 				 * else if the number of seats is empty show a toast
@@ -110,77 +111,6 @@ public class OptionsActivity extends Activity
 		});
     }
 
-    public void calculateAndShow()
-    {
-    	double highest = 0.0;
-    	String seatTo = "";
-    	Map<String, Double> lastQuot = new HashMap<String, Double>();
-    	Map<String, Integer> nextSeat = new HashMap<String, Integer>();
-    	
-		//Map<String, Integer> results = new HashMap<String, Integer>();
-		
-    	// Clear the hash map results
-    	PartyListActivity.results.clear();
-    	
-		// Initialize the results hash map for the parties in votes
-		for (String s: PartyListActivity.votes.keySet())
-		{
-			// They start with 0 seats each
-			PartyListActivity.results.put(s, 0);
-		}
-		
-		// Calculate the number of seats for each party
-		for (int i = 1; i <= seats; i++) {
-			// Highest value in this round (reset it to 0 in each round)
-			highest = 0.0;
-			
-			// Who gets the seat in this round (reset it to "" in each round)
-			seatTo = "";
-			
-			for (String s: PartyListActivity.votes.keySet()) {
-				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
-				// Calculate the quot for this party in this round
-				double quot = PartyListActivity.votes.get(s).doubleValue() / Methods.getDivisor(PartyListActivity.results.get(s));
-				
-				// If the quot is bigger than the highest value in this round
-				if (quot > highest) {
-					// the party becomes the candidate to get this seat
-					seatTo = s;
-					// Save the quot to check it with the values for the rest of parties
-					highest = quot;
-				// else if the quot is equal to the highest value in this round
-				} else if (quot == highest) {
-					// The seat goes to the party that has more votes
-					if (PartyListActivity.votes.get(s) > PartyListActivity.votes.get(seatTo)) {
-						seatTo = s;
-						highest = quot;
-					}
-				}
-				
-				// Save the last quots to calculate the number of extra votes needed to get the last seat
-				if (i == seats) {
-					lastQuot.put(s, quot);
-				}
-			}
-			// The party with the highest quot gets another seat
-			PartyListActivity.results.put(seatTo, PartyListActivity.results.get(seatTo) + 1);
-		}
-		
-		/* TODO: Complete this
-		for (String s: PartyListActivity.votes.keySet()) {
-			// The party that got the last seat needs 0 votes to get the last seat
-			if (s == seatTo) {
-				nextSeat.put(s, 0);
-			// The rest of parties need to get a bigger quot than the party that got the last seat
-			} else {
-				nextSeat.put(s, );
-			}
-		}
-		*/
-		Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
-		startActivity(intent);
-		
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);
