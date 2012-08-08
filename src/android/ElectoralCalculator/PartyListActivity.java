@@ -20,6 +20,7 @@ public class PartyListActivity extends Activity {
 	
 	Button buttonContinue;
 	Button buttonAddParty;
+	Button buttonClearList;
 	
 	ListView listParties;
 	public static ArrayList<String> listItems = new ArrayList<String>();
@@ -65,6 +66,20 @@ public class PartyListActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+        
+        buttonClearList = (Button)findViewById(R.id.buttonClearList);
+        
+        buttonClearList.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Clear the map
+				Data.votes.clear();
+				
+				// Clear the list and notify the adapter
+				listItems.clear();
+				adapter.notifyDataSetChanged();
+			}
+        });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
