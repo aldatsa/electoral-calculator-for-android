@@ -39,7 +39,7 @@
         </activity>
         <activity 
             android:name=".RemoveEditActivity"
-            android:label="@string/about_title"
+            android:label="@string/removeedit_title"
             android:theme="@android:style/Theme.Dialog">
         </activity>
     </application>

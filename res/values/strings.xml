@@ -39,4 +39,7 @@
 	<string name="default_method_label">Default method</string>
 	<string name="default_method_summary">Select the method used by default</string>
 	<string name="buttonClearList">Clear list</string>
+	<string name="edit">Edit</string>
+	<string name="remove">Remove</string>
+	<string name="removeedit_title">What do you want to do?</string>
 </resources>
