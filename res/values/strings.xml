@@ -38,4 +38,5 @@
 	<string name="settings_label">Settings&#8230;</string>
 	<string name="default_method_label">Default method</string>
 	<string name="default_method_summary">Select the method used by default</string>
+	<string name="buttonClearList">Clear list</string>
 </resources>
