@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -35,6 +37,21 @@ public class PartyListActivity extends Activity {
         listParties = (ListView)findViewById(R.id.listParties);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         listParties.setAdapter(adapter);
+        
+        listParties.setClickable(true);
+        listParties.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				Object o = listParties.getItemAtPosition(position);
+				Toast toast = Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_SHORT);
+				toast.show();
+				
+				Intent intent = new Intent(PartyListActivity.this, RemoveEditActivity.class);
+				startActivity(intent);
+			}
+        });
         
         buttonContinue = (Button)findViewById(R.id.buttonContinue);
 
