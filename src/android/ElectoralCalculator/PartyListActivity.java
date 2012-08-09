@@ -104,6 +104,11 @@ public class PartyListActivity extends Activity {
             case R.id.edit_menu_item:
 				toast = Toast.makeText(getApplicationContext(), String.format("Selected item: %s for %s", String.valueOf(item.toString()), listItemName), Toast.LENGTH_SHORT);
 				toast.show();
+				
+				// Launch EditPartyActivity to edit the values of the selected party
+				Intent intent = new Intent(getApplicationContext(), EditPartyActivity.class);
+				startActivity(intent);
+
                 return true;
             case R.id.remove_menu_item:
             	toast = Toast.makeText(getApplicationContext(), String.format("Selected item: %s for %s", String.valueOf(item.toString()), listItemName), Toast.LENGTH_SHORT);

@@ -42,4 +42,5 @@
 	<string name="edit">Edit</string>
 	<string name="remove">Remove</string>
 	<string name="removeedit_title">What do you want to do?</string>
+	<string name="editparty_title">Edit party</string>
 </resources>

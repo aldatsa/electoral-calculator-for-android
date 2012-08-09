@@ -35,6 +35,11 @@
             android:theme="@android:style/Theme.Dialog">
         </activity>
         <activity 
+            android:name=".EditPartyActivity"
+            android:label="@string/editparty_title"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <activity 
             android:name=".PreferencesActivity">
         </activity>
     </application>

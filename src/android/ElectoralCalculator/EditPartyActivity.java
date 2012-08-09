@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-//TODO: Create a parent class for EditPartyActivity and AddPartyActivity with the common functionality
+// TODO: Create a parent class for EditPartyActivity and AddPartyActivity with the common functionality
 
-public class AddPartyActivity extends Activity {
+public class EditPartyActivity extends Activity {
 	
 	EditText editParty;
 	EditText editVotes;
@@ -23,7 +23,7 @@ public class AddPartyActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addparty);
-		
+
         editParty = (EditText)findViewById(R.id.editParty);
         editVotes = (EditText)findViewById(R.id.editVotes);
         
@@ -37,7 +37,7 @@ public class AddPartyActivity extends Activity {
     			String strNewVotes = editVotes.getText().toString();
 
     			/* If editParty and editVotes are not empty,
-    			 * then add the party to the map and to the arraylist
+    			 * then edit the values of the selected party on the map and the arraylist
     			 * and notify the adapter that there is new data
     			 */
     			if (strNewParty.length() > 0 && strNewVotes.length() > 0)
@@ -53,7 +53,7 @@ public class AddPartyActivity extends Activity {
     				
     				editParty.requestFocus();
     				
-    				Intent intent = new Intent(AddPartyActivity.this, PartyListActivity.class);
+    				Intent intent = new Intent(EditPartyActivity.this, PartyListActivity.class);
     				startActivity(intent);
     			}
     			/* Else if both EditTexts are empty
@@ -101,7 +101,7 @@ public class AddPartyActivity extends Activity {
     		
     		@Override
     		public void onClick(View v) {
-				Intent intent = new Intent(AddPartyActivity.this, PartyListActivity.class);
+				Intent intent = new Intent(EditPartyActivity.this, PartyListActivity.class);
 				startActivity(intent);
     		}
         });
