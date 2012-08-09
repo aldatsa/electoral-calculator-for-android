@@ -114,7 +114,7 @@ public class PartyListActivity extends Activity {
 				Intent intent = new Intent(getApplicationContext(), EditPartyActivity.class);
 				
 				// Pass selected item's position in the array to EditPartyActivity
-				intent.putExtra("POS", info.position); 
+				intent.putExtra("POS", info.position - 1); // It's -1 due to the header
 				
 				startActivity(intent);
 
