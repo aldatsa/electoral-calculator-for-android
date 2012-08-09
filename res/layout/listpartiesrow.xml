@@ -7,11 +7,13 @@
     <TextView
         android:id="@+id/txtvwPartyList_party"
         android:layout_width="fill_parent"
+        android:layout_weight="1"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/txtvwPartyList_votes"
         android:layout_width="fill_parent"
+        android:layout_weight="1"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
