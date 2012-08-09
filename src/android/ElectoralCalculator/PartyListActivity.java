@@ -1,7 +1,5 @@
 package android.ElectoralCalculator;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +23,6 @@ public class PartyListActivity extends Activity {
 	Button buttonClearList;
 	
 	ListView listParties;
-	public static ArrayList<String> listItems = new ArrayList<String>();
 	
 	PartyListAdapter adapter = new PartyListAdapter(this, Data.listOfParties);
 	

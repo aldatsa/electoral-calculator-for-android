@@ -58,10 +58,7 @@ public class EditPartyActivity extends Activity {
     			if (strNewParty.length() > 0 && strNewVotes.length() > 0)
     			{
     				Data.votes.put(strNewParty, Integer.parseInt(strNewVotes));
-    			
-    				PartyListActivity.listItems.add(strNewParty + ": " + strNewVotes);
-    				//PartyListActivity.adapter.notifyDataSetChanged();
-    				
+
     				Data.listOfParties.set(list_position, new Party(strNewParty, intNewVotes));
     				
     				// Clean the EditTexts
