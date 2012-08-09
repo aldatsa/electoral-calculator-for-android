@@ -30,7 +30,7 @@ public class PartyListActivity extends Activity {
 	public static ArrayList<String> listItems = new ArrayList<String>();
 	public static ArrayAdapter<String> adapter;
 	
-	List<Party> listOfParties = new ArrayList<Party>();
+	public static List<Party> listOfParties = new ArrayList<Party>();
 	
 	PartyListAdapter adapter2 = new PartyListAdapter(this, listOfParties);
 	
@@ -43,8 +43,8 @@ public class PartyListActivity extends Activity {
         listParties = (ListView)findViewById(R.id.listParties);
         listParties.setClickable(true);
         
-        listOfParties.add(new Party("Test", 123));
-        listOfParties.add(new Party("Test1", 456));
+        //listOfParties.add(new Party("Test", 123));
+        //listOfParties.add(new Party("Test1", 456));
         
         listParties.setAdapter(adapter2);
         
