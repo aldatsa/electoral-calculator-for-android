@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-//import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -97,17 +97,25 @@ public class PartyListActivity extends Activity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+    	String listItemName = listParties.getItemAtPosition(info.position).toString();
         Toast toast;
         switch (item.getItemId()) {
             case R.id.edit_menu_item:
-				toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
+				toast = Toast.makeText(getApplicationContext(), String.format("Selected item: %s for %s", String.valueOf(item.toString()), listItemName), Toast.LENGTH_SHORT);
 				toast.show();
                 return true;
             case R.id.remove_menu_item:
-            	toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
+            	toast = Toast.makeText(getApplicationContext(), String.format("Selected item: %s for %s", String.valueOf(item.toString()), listItemName), Toast.LENGTH_SHORT);
 				toast.show();
-                return true;
+				
+				// TODO: Remove the selected party from the map
+				
+				// Remove the selected party from the list
+				listItems.remove(info.position);
+				adapter.notifyDataSetChanged();
+                
+				return true;
             case R.id.cancel_menu_item:
             	toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
 				toast.show();
