@@ -12,9 +12,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 public class PartyListActivity extends Activity {
 	
@@ -33,6 +35,13 @@ public class PartyListActivity extends Activity {
         setContentView(R.layout.partylist);
         
         listParties = (ListView)findViewById(R.id.listParties);
+        
+        // Inflate the header for listParties
+        LayoutInflater inflater = getLayoutInflater();
+        View header = inflater.inflate(R.layout.listpartiesheader, (ViewGroup) findViewById(R.id.party_list_header));
+        
+        // Add the header to listParties
+        listParties.addHeaderView(header);
         
         listParties.setAdapter(adapter);
         

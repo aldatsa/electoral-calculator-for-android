@@ -43,4 +43,6 @@
 	<string name="remove">Remove</string>
 	<string name="removeedit_title">What do you want to do?</string>
 	<string name="editparty_title">Edit party</string>
+	<string name="party_header">Party</string>
+	<string name="votes_header">Votes</string>
 </resources>
