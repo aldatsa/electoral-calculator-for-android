@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.ArrayAdapter;
+//import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,7 +27,7 @@ public class PartyListActivity extends Activity {
 	
 	ListView listParties;
 	public static ArrayList<String> listItems = new ArrayList<String>();
-	public static ArrayAdapter<String> adapter;
+	//public static ArrayAdapter<String> adapter;
 	
 	PartyListAdapter adapter2 = new PartyListAdapter(this, Data.listOfParties);
 	
@@ -38,14 +38,14 @@ public class PartyListActivity extends Activity {
         setContentView(R.layout.partylist);
         
         listParties = (ListView)findViewById(R.id.listParties);
-        listParties.setClickable(true);
+        //listParties.setClickable(true);
         
         //listOfParties.add(new Party("Test", 123));
         //listOfParties.add(new Party("Test1", 456));
         
         listParties.setAdapter(adapter2);
         
-        //registerForContextMenu(listParties);
+        registerForContextMenu(listParties);
 
         buttonContinue = (Button)findViewById(R.id.buttonContinue);
 
@@ -122,8 +122,10 @@ public class PartyListActivity extends Activity {
 				// TODO: Remove the selected party from the map
 				
 				// Remove the selected party from the list
-				listItems.remove(info.position);
-				adapter.notifyDataSetChanged();
+				//listItems.remove(info.position);
+				Data.listOfParties.remove(info.position);
+				adapter2.notifyDataSetChanged();
+				//adapter.notifyDataSetChanged();
                 
 				return true;
             case R.id.cancel_menu_item:
