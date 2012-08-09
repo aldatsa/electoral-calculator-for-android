@@ -49,7 +49,8 @@ public class EditPartyActivity extends Activity {
     		public void onClick(View v) {
     			String strNewParty = editParty.getText().toString();
     			String strNewVotes = editVotes.getText().toString();
-
+    			int intNewVotes = Integer.parseInt(editVotes.getText().toString());
+    			
     			/* If editParty and editVotes are not empty,
     			 * then edit the values of the selected party on the map and the arraylist
     			 * and notify the adapter that there is new data
@@ -60,6 +61,8 @@ public class EditPartyActivity extends Activity {
     			
     				PartyListActivity.listItems.add(strNewParty + ": " + strNewVotes);
     				//PartyListActivity.adapter.notifyDataSetChanged();
+    				
+    				Data.listOfParties.set(list_position, new Party(strNewParty, intNewVotes));
     				
     				// Clean the EditTexts
     				editParty.setText("");
