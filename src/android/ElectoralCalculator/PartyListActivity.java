@@ -30,6 +30,10 @@ public class PartyListActivity extends Activity {
 	public static ArrayList<String> listItems = new ArrayList<String>();
 	public static ArrayAdapter<String> adapter;
 	
+	List<Party> listOfParties = new ArrayList<Party>();
+	
+	PartyListAdapter adapter2 = new PartyListAdapter(this, listOfParties);
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,13 +43,10 @@ public class PartyListActivity extends Activity {
         listParties = (ListView)findViewById(R.id.listParties);
         listParties.setClickable(true);
         
-        List<Party> listOfParties = new ArrayList<Party>();
         listOfParties.add(new Party("Test", 123));
         listOfParties.add(new Party("Test1", 456));
-
-        PartyListAdapter adapter = new PartyListAdapter(this, listOfParties);
         
-        listParties.setAdapter(adapter);
+        listParties.setAdapter(adapter2);
         
         //registerForContextMenu(listParties);
 
@@ -87,10 +88,9 @@ public class PartyListActivity extends Activity {
 			public void onClick(View v) {
 				// Clear the map
 				Data.votes.clear();
-				
-				// Clear the list and notify the adapter
-				listItems.clear();
-				//adapter.notifyDataSetChanged();
+
+				listOfParties.clear();
+				adapter2.notifyDataSetChanged();
 			}
         });
     }
