@@ -43,7 +43,7 @@ public class PartyListAdapter extends BaseAdapter implements OnClickListener {
         tvName.setText(entry.getName());
 
         TextView tvVotes = (TextView) convertView.findViewById(R.id.txtvwPartyList_votes);
-        tvVotes.setText(entry.getVotes());        
+        tvVotes.setText(String.valueOf(entry.getVotes()));        
 
         return convertView;
     }

@@ -1,6 +1,7 @@
 package android.ElectoralCalculator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,10 +37,17 @@ public class PartyListActivity extends Activity {
         setContentView(R.layout.partylist);
         
         listParties = (ListView)findViewById(R.id.listParties);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
+        listParties.setClickable(true);
+        
+        List<Party> listOfParties = new ArrayList<Party>();
+        listOfParties.add(new Party("Test", 123));
+        listOfParties.add(new Party("Test1", 456));
+
+        PartyListAdapter adapter = new PartyListAdapter(this, listOfParties);
+        
         listParties.setAdapter(adapter);
         
-        registerForContextMenu(listParties);
+        //registerForContextMenu(listParties);
 
         buttonContinue = (Button)findViewById(R.id.buttonContinue);
 
@@ -82,7 +90,7 @@ public class PartyListActivity extends Activity {
 				
 				// Clear the list and notify the adapter
 				listItems.clear();
-				adapter.notifyDataSetChanged();
+				//adapter.notifyDataSetChanged();
 			}
         });
     }
