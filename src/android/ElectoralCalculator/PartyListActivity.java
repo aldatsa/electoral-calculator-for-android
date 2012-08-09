@@ -41,7 +41,7 @@ public class PartyListActivity extends Activity {
         View header = inflater.inflate(R.layout.listpartiesheader, (ViewGroup) findViewById(R.id.party_list_header));
         
         // Add the header to listParties
-        listParties.addHeaderView(header);
+        listParties.addHeaderView(header, null, false); // addHeaderView(view, data, isSelectable);
         
         listParties.setAdapter(adapter);
         
