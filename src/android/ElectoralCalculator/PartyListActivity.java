@@ -27,7 +27,7 @@ public class PartyListActivity extends Activity {
 	ListView listParties;
 	public static ArrayList<String> listItems = new ArrayList<String>();
 	
-	PartyListAdapter adapter2 = new PartyListAdapter(this, Data.listOfParties);
+	PartyListAdapter adapter = new PartyListAdapter(this, Data.listOfParties);
 	
     /** Called when the activity is first created. */
     @Override
@@ -37,7 +37,7 @@ public class PartyListActivity extends Activity {
         
         listParties = (ListView)findViewById(R.id.listParties);
         
-        listParties.setAdapter(adapter2);
+        listParties.setAdapter(adapter);
         
         registerForContextMenu(listParties);
 
@@ -81,7 +81,7 @@ public class PartyListActivity extends Activity {
 				Data.votes.clear();
 
 				Data.listOfParties.clear();
-				adapter2.notifyDataSetChanged();
+				adapter.notifyDataSetChanged();
 			}
         });
     }
@@ -112,7 +112,7 @@ public class PartyListActivity extends Activity {
             case R.id.remove_menu_item:
 				// Remove the selected party from the list
 				Data.listOfParties.remove(info.position);
-				adapter2.notifyDataSetChanged();
+				adapter.notifyDataSetChanged();
                 
 				return true;
             case R.id.cancel_menu_item:
