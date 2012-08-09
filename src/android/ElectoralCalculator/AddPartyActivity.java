@@ -46,7 +46,6 @@ public class AddPartyActivity extends Activity {
     				Data.votes.put(strNewParty, Integer.parseInt(strNewVotes));
     			
     				PartyListActivity.listItems.add(strNewParty + ": " + strNewVotes);
-    				//PartyListActivity.adapter.notifyDataSetChanged();
     				
     				Data.listOfParties.add(new Party(strNewParty, intNewVotes));
     				
