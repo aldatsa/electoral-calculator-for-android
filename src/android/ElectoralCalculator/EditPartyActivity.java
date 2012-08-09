@@ -18,15 +18,29 @@ public class EditPartyActivity extends Activity {
 	EditText editVotes;
 	Button buttonAddNewParty;
 	Button buttonCancelAddNewParty;
-	
+	int list_position;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addparty);
 
+		Bundle extras = getIntent().getExtras(); 
+		if(extras !=null) {
+			// Get the position of the selected party in the list listOfParties from PartyListActivity
+		    list_position = extras.getInt("POS");
+		}
+
         editParty = (EditText)findViewById(R.id.editParty);
+        
+        // Get the name of the party selected in PartyListActivity using its position on the list listOfParties
+        editParty.setText(Data.listOfParties.get(list_position).getName().toString());
+        
         editVotes = (EditText)findViewById(R.id.editVotes);
         
+        // Get the name of the party selected in PartyListActivity using its position on the list listOfParties
+        editVotes.setText(Integer.toString(Data.listOfParties.get(list_position).getVotes()));
+
         buttonAddNewParty = (Button)findViewById(R.id.buttonAddNewParty);
         
         buttonAddNewParty.setOnClickListener(new OnClickListener() {

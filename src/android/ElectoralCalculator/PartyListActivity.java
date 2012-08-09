@@ -106,6 +106,10 @@ public class PartyListActivity extends Activity {
 				
 				// Launch EditPartyActivity to edit the values of the selected party
 				Intent intent = new Intent(getApplicationContext(), EditPartyActivity.class);
+				
+				// Pass selected item's position in the array to EditPartyActivity
+				intent.putExtra("POS", info.position); 
+				
 				startActivity(intent);
 
                 return true;
