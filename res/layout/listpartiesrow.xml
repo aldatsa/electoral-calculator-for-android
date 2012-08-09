@@ -9,12 +9,14 @@
         android:id="@+id/txtvwPartyList_party"
         android:layout_width="fill_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/txtvwPartyList_votes"
         android:layout_width="fill_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center" />
 
 </LinearLayout>
