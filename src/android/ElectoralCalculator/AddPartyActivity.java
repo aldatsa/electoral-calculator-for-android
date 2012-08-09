@@ -48,7 +48,7 @@ public class AddPartyActivity extends Activity {
     				PartyListActivity.listItems.add(strNewParty + ": " + strNewVotes);
     				//PartyListActivity.adapter.notifyDataSetChanged();
     				
-    				PartyListActivity.listOfParties.add(new Party(strNewParty, intNewVotes));
+    				Data.listOfParties.add(new Party(strNewParty, intNewVotes));
     				
     				// Clean the EditTexts
     				editParty.setText("");

@@ -1,7 +1,6 @@
 package android.ElectoralCalculator;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,9 +29,7 @@ public class PartyListActivity extends Activity {
 	public static ArrayList<String> listItems = new ArrayList<String>();
 	public static ArrayAdapter<String> adapter;
 	
-	public static List<Party> listOfParties = new ArrayList<Party>();
-	
-	PartyListAdapter adapter2 = new PartyListAdapter(this, listOfParties);
+	PartyListAdapter adapter2 = new PartyListAdapter(this, Data.listOfParties);
 	
     /** Called when the activity is first created. */
     @Override
@@ -89,7 +86,7 @@ public class PartyListActivity extends Activity {
 				// Clear the map
 				Data.votes.clear();
 
-				listOfParties.clear();
+				Data.listOfParties.clear();
 				adapter2.notifyDataSetChanged();
 			}
         });
