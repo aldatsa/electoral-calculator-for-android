@@ -8,12 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+//import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,21 +39,8 @@ public class PartyListActivity extends Activity {
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         listParties.setAdapter(adapter);
         
-        listParties.setClickable(true);
-        listParties.setOnItemClickListener(new OnItemClickListener() {
+        registerForContextMenu(listParties);
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position,
-					long id) {
-				Object o = listParties.getItemAtPosition(position);
-				Toast toast = Toast.makeText(getApplicationContext(), o.toString(), Toast.LENGTH_SHORT);
-				toast.show();
-				
-				Intent intent = new Intent(PartyListActivity.this, RemoveEditActivity.class);
-				startActivity(intent);
-			}
-        });
-        
         buttonContinue = (Button)findViewById(R.id.buttonContinue);
 
         buttonContinue.setOnClickListener(new OnClickListener() {
@@ -98,6 +86,37 @@ public class PartyListActivity extends Activity {
 			}
         });
     }
+    
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.edit_remove_context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        //AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+        Toast toast;
+        switch (item.getItemId()) {
+            case R.id.edit_menu_item:
+				toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
+				toast.show();
+                return true;
+            case R.id.remove_menu_item:
+            	toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
+				toast.show();
+                return true;
+            case R.id.cancel_menu_item:
+            	toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
+				toast.show();
+            	return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);

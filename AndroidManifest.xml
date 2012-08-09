@@ -37,11 +37,6 @@
         <activity 
             android:name=".PreferencesActivity">
         </activity>
-        <activity 
-            android:name=".RemoveEditActivity"
-            android:label="@string/removeedit_title"
-            android:theme="@android:style/Theme.Dialog">
-        </activity>
     </application>
 
 </manifest>
