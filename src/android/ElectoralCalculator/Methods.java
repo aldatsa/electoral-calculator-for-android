@@ -61,14 +61,8 @@ public enum Methods {
     	int seatToPos = 0;
     	
     	Map<String, Double> lastQuot = new HashMap<String, Double>();
-    	//Map<String, Integer> nextSeat = new HashMap<String, Integer>();
-    	//Map<String, Integer> results = new HashMap<String, Integer>();
     	
-		// Initialize the results hash map for the parties in votes
-		//for (int i = 0; i < votes.size(); i++) {
-		//	// They start with 0 seats each
-		//	results.put(votes.get(i).getName(), 0);
-		//}
+		// Reset the seats of all parties to zero
 		Data.resetSeats();
 		
 		// Calculate the number of seats for each party
@@ -86,7 +80,6 @@ public enum Methods {
 				tmpPartyVotes = votes.get(pos).getVotes();
 				
 				// Calculate the quot for this party in this round
-				//double quot = (double) tmpPartyVotes / Methods.getDivisor(results.get(tmpPartyName));
 				double quot = (double) tmpPartyVotes / Methods.getDivisor(Data.listOfParties.get(pos).getSeats());
 				
 				// If the quot is bigger than the highest value in this round
@@ -114,7 +107,6 @@ public enum Methods {
 				}
 			}
 			// The party with the highest quot gets another seat
-			//results.put(seatTo, results.get(seatTo) + 1);
 			Data.listOfParties.get(seatToPos).setSeats(Data.listOfParties.get(seatToPos).getSeats() + 1);
 		}
 		
@@ -132,7 +124,6 @@ public enum Methods {
     }
 
     private static void calculateLargestRemainder(int numSeats, List<Party> votes) {
-    	//Map<String, Integer> results = new HashMap<String, Integer>();
     	Map<String, Double> remainder = new HashMap<String, Double>();
     	Double quota = 0.0;
     	int tempSeats = 0;
@@ -166,9 +157,7 @@ public enum Methods {
     		tmpPartyName = votes.get(pos).getName();
     		tmpPartyVotes = votes.get(pos).getVotes();
     		tempVQ = tmpPartyVotes / quota;
-    		//results.put(tmpPartyName, (int)tempVQ);
     		Data.listOfParties.get(pos).setSeats((int)tempVQ);
-    		//remainder.put(tmpPartyName, tempVQ - results.get(tmpPartyName));
     		remainder.put(tmpPartyName, tempVQ - Data.listOfParties.get(pos).getSeats());
     		tempSeats = tempSeats + Data.listOfParties.get(pos).getSeats();
     	}
@@ -186,9 +175,7 @@ public enum Methods {
     		Double currentRemainder = 0.0;
     		
     		// Find the highest remainder in this round
-    		//for (String party: remainder.keySet()) {
     		for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
-    			//currentRemainder = remainder.get(party);
     			currentRemainder = remainder.get(Data.listOfParties.get(pos).getName()); 
     			if (currentRemainder.compareTo(tmpHighestRemainder) > 0) {
     				tmpHighestRemainder = currentRemainder;
@@ -198,7 +185,6 @@ public enum Methods {
     		}
     		
     		// The highest remainder gets another seat
-    		//results.put(tmpHighestRemainderParty, results.get(tmpHighestRemainderParty) + 1);
     		Data.listOfParties.get(tmpHighestRemainderPos).setSeats(Data.listOfParties.get(tmpHighestRemainderPos).getSeats() + 1);   		
     		// Add one to tempSeats
     		tempSeats = tempSeats + 1;
@@ -206,6 +192,5 @@ public enum Methods {
     		// Remove the highest remainder from the map
     		remainder.remove(tmpHighestRemainderParty);
     	}
-    	//return results;
     }
 }
