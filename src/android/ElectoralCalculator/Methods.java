@@ -56,9 +56,7 @@ public enum Methods {
     }
     private static void calculateHighestAverage(int seats, List<Party> votes) {
     	double highest = 0.0;
-    	String seatTo = "";
-    	int seatToVotes = 0;
-    	int seatToPos = 0;
+    	int seatToPos = 0; // To store the position in the list votes of the party that is currently going to get the next seat 
     	
     	Map<String, Double> lastQuot = new HashMap<String, Double>();
     	
@@ -70,13 +68,11 @@ public enum Methods {
 			// Highest value in this round (reset it to 0 in each round)
 			highest = 0.0;
 			
-			// Who gets the seat in this round (reset it to "" in each round)
-			seatTo = "";
-			String tmpPartyName = "";
+			// Who gets the seat in this round (reset it to 0 in each round)
+			seatToPos = 0;
 			int tmpPartyVotes = 0;
 			for (int pos = 0; pos < votes.size(); pos++) {
 				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
-				tmpPartyName = votes.get(pos).getName().toString();
 				tmpPartyVotes = votes.get(pos).getVotes();
 				
 				// Calculate the quot for this party in this round
@@ -85,17 +81,13 @@ public enum Methods {
 				// If the quot is bigger than the highest value in this round
 				if (quot > highest) {
 					// the party becomes the candidate to get this seat
-					seatTo = tmpPartyName;
-					seatToVotes = tmpPartyVotes;
 					seatToPos = pos;
 					// Save the quot to check it with the values for the rest of parties
 					highest = quot;
 				// else if the quot is equal to the highest value in this round
 				} else if (quot == highest) {
 					// The seat goes to the party that has more votes
-					if (tmpPartyVotes > seatToVotes) {
-						seatTo = tmpPartyName;
-						seatToVotes = tmpPartyVotes;
+					if (tmpPartyVotes > Data.listOfParties.get(seatToPos).getVotes()) {
 						seatToPos = pos;
 						highest = quot;
 					}
@@ -103,7 +95,7 @@ public enum Methods {
 				
 				// Save the last quots to calculate the number of extra votes needed to get the last seat
 				if (i == seats) {
-					lastQuot.put(tmpPartyName, quot);
+					lastQuot.put(Data.listOfParties.get(seatToPos).getName().toString(), quot);
 				}
 			}
 			// The party with the highest quot gets another seat
