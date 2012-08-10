@@ -23,8 +23,9 @@ public class Data {
 	
 	public static int calculateTotalVotes() {
 		int tmpTotalVotes = 0;
-		for (String s: Data.votes.keySet()) {
-			tmpTotalVotes = tmpTotalVotes + Data.votes.get(s);
+
+		for (int pos = 0; pos < listOfParties.size(); pos++) {
+			tmpTotalVotes = tmpTotalVotes + listOfParties.get(pos).getVotes();
 		}
 		return tmpTotalVotes;
 	}

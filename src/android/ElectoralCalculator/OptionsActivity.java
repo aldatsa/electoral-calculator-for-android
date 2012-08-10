@@ -50,7 +50,8 @@ public class OptionsActivity extends Activity
 				/* If EditSeats is not empty 
 				 * and there are elements in the votes Map 
 				 */
-				if (strSeats.length() > 0 && !Data.votes.isEmpty())
+				//if (strSeats.length() > 0 && !Data.votes.isEmpty())
+				if (strSeats.length() > 0 && !Data.listOfParties.isEmpty())
 				{
 			        // Make sure that the hash map used for the results is empty
 			        Data.results.clear();
