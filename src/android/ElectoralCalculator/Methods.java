@@ -1,6 +1,7 @@
 package android.ElectoralCalculator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public enum Methods {
@@ -46,25 +47,25 @@ public enum Methods {
     	}
     }
     
-    public static Map<String, Integer> calculate(int seats, Map<String, Integer> votes) {
+    public static Map<String, Integer> calculate(int seats, List<Party> votes) {
     	if (method.equals(DHONDT) || method.equals(SAINTE_LAGUE) || method.equals(MODIFIED_SAINTE_LAGUE) || method.equals(IMPERIALI)) {
     		return calculateHighestAverage(seats, votes);
     	} else { //if (method.equals(HARE_QUOTA) || method.equals(DROOP_QUOTA)){
     		return calculateLargestRemainder(seats, votes);
     	}
     }
-    private static Map<String, Integer> calculateHighestAverage(int seats, Map<String, Integer> votes) {
+    private static Map<String, Integer> calculateHighestAverage(int seats, List<Party> votes) {
     	double highest = 0.0;
     	String seatTo = "";
+    	int seatToVotes = 0;
     	Map<String, Double> lastQuot = new HashMap<String, Double>();
     	//Map<String, Integer> nextSeat = new HashMap<String, Integer>();
     	Map<String, Integer> results = new HashMap<String, Integer>();
     	
 		// Initialize the results hash map for the parties in votes
-		for (String s: votes.keySet())
-		{
+		for (int i = 0; i < votes.size(); i++) {
 			// They start with 0 seats each
-			results.put(s, 0);
+			results.put(votes.get(i).getName(), 0);
 		}
 		
 		// Calculate the number of seats for each party
@@ -74,30 +75,36 @@ public enum Methods {
 			
 			// Who gets the seat in this round (reset it to "" in each round)
 			seatTo = "";
-			
-			for (String s: votes.keySet()) {
+			String tmpPartyName = "";
+			int tmpPartyVotes = 0;
+			for (int pos = 0; pos < votes.size(); pos++) {
 				// TODO: I should take into account if the party's vote percentage is bigger than the threshold
+				tmpPartyName = votes.get(pos).getName().toString();
+				tmpPartyVotes = votes.get(pos).getVotes();
+				
 				// Calculate the quot for this party in this round
-				double quot = votes.get(s).doubleValue() / Methods.getDivisor(results.get(s));
+				double quot = (double) tmpPartyVotes / Methods.getDivisor(results.get(tmpPartyName));
 				
 				// If the quot is bigger than the highest value in this round
 				if (quot > highest) {
 					// the party becomes the candidate to get this seat
-					seatTo = s;
+					seatTo = tmpPartyName;
+					seatToVotes = tmpPartyVotes;
 					// Save the quot to check it with the values for the rest of parties
 					highest = quot;
 				// else if the quot is equal to the highest value in this round
 				} else if (quot == highest) {
 					// The seat goes to the party that has more votes
-					if (votes.get(s) > votes.get(seatTo)) {
-						seatTo = s;
+					if (tmpPartyVotes > seatToVotes) {
+						seatTo = tmpPartyName;
+						seatToVotes = tmpPartyVotes;
 						highest = quot;
 					}
 				}
 				
 				// Save the last quots to calculate the number of extra votes needed to get the last seat
 				if (i == seats) {
-					lastQuot.put(s, quot);
+					lastQuot.put(tmpPartyName, quot);
 				}
 			}
 			// The party with the highest quot gets another seat
@@ -119,7 +126,7 @@ public enum Methods {
 		*/
     }
 
-    private static Map<String, Integer> calculateLargestRemainder(int numSeats, Map<String, Integer> votes) {
+    private static Map<String, Integer> calculateLargestRemainder(int numSeats, List<Party> votes) {
     	Map<String, Integer> results = new HashMap<String, Integer>();
     	Map<String, Double> remainder = new HashMap<String, Double>();
     	Double quota = 0.0;
@@ -144,15 +151,19 @@ public enum Methods {
     		// ERROR: Not a valid method, show a toast?
     	}
     	
+    	String tmpPartyName = "";
+		int tmpPartyVotes = 0;
     	/*
     	 *  Each party is first allocated a number of seats equal to their integer. 
     	 *  This will generally leave some seats unallocated.
     	 */
-    	for (String party: votes.keySet()) {
-    		tempVQ = votes.get(party) / quota;
-    		results.put(party, (int)tempVQ);
-    		remainder.put(party, tempVQ - results.get(party));
-    		tempSeats = tempSeats + results.get(party);
+    	for (int pos = 0; pos < votes.size(); pos++) {
+    		tmpPartyName = votes.get(pos).getName();
+    		tmpPartyVotes = votes.get(pos).getVotes();
+    		tempVQ = tmpPartyVotes / quota;
+    		results.put(tmpPartyName, (int)tempVQ);
+    		remainder.put(tmpPartyName, tempVQ - results.get(tmpPartyName));
+    		tempSeats = tempSeats + results.get(tmpPartyName);
     	}
     	
     	/*
