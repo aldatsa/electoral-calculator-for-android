@@ -54,7 +54,7 @@ public class OptionsActivity extends Activity
 				if (strSeats.length() > 0 && !Data.listOfParties.isEmpty())
 				{
 			        // Make sure that the hash map used for the results is empty
-			        Data.results.clear();
+			        //Data.results.clear();
 			        // and the total number of votes is 0
 			        Data.totalVotes = 0;
 			        
@@ -65,7 +65,7 @@ public class OptionsActivity extends Activity
 					Data.totalVotes = Data.calculateTotalVotes();
 					
 					// Calculate and show the results
-					Data.results = Methods.calculate(Data.seats, Data.listOfParties);
+					Methods.calculate(Data.seats, Data.listOfParties);
 					
 					// Launch ResultActivity to show the results
 					Intent intent = new Intent(OptionsActivity.this, ResultActivity.class);
