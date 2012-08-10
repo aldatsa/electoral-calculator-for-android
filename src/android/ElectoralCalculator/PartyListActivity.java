@@ -121,7 +121,7 @@ public class PartyListActivity extends Activity {
                 return true;
             case R.id.remove_menu_item:
 				// Remove the selected party from the list
-				Data.listOfParties.remove(info.position);
+				Data.listOfParties.remove(info.position - 1); // It's -1 due to the header
 				adapter.notifyDataSetChanged();
                 
 				return true;
