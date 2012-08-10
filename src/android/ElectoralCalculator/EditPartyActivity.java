@@ -49,7 +49,6 @@ public class EditPartyActivity extends Activity {
     		public void onClick(View v) {
     			String strNewParty = editParty.getText().toString();
     			String strNewVotes = editVotes.getText().toString();
-    			int intNewVotes = Integer.parseInt(editVotes.getText().toString());
     			
     			/* If editParty and editVotes are not empty,
     			 * then edit the values of the selected party on the map and the arraylist
@@ -59,7 +58,7 @@ public class EditPartyActivity extends Activity {
     			{
     				Data.votes.put(strNewParty, Integer.parseInt(strNewVotes));
 
-    				Data.listOfParties.set(list_position, new Party(strNewParty, intNewVotes));
+    				Data.listOfParties.set(list_position, new Party(strNewParty, Integer.parseInt(strNewVotes)));
     				
     				// Clean the EditTexts
     				editParty.setText("");
