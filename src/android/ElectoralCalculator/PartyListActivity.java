@@ -103,13 +103,9 @@ public class PartyListActivity extends Activity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-    	String listItemName = listParties.getItemAtPosition(info.position).toString();
-        Toast toast;
+
         switch (item.getItemId()) {
             case R.id.edit_menu_item:
-				toast = Toast.makeText(getApplicationContext(), String.format("Selected item: %s for %s", String.valueOf(item.toString()), listItemName), Toast.LENGTH_SHORT);
-				toast.show();
-				
 				// Launch EditPartyActivity to edit the values of the selected party
 				Intent intent = new Intent(getApplicationContext(), EditPartyActivity.class);
 				
@@ -119,16 +115,17 @@ public class PartyListActivity extends Activity {
 				startActivity(intent);
 
                 return true;
+            
             case R.id.remove_menu_item:
 				// Remove the selected party from the list
 				Data.listOfParties.remove(info.position - 1); // It's -1 due to the header
 				adapter.notifyDataSetChanged();
                 
 				return true;
+            
             case R.id.cancel_menu_item:
-            	toast = Toast.makeText(getApplicationContext(), "Selected item: " + String.valueOf(item.toString()), Toast.LENGTH_SHORT);
-				toast.show();
             	return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
