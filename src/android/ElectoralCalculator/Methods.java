@@ -69,6 +69,7 @@ public enum Methods {
 		//	// They start with 0 seats each
 		//	results.put(votes.get(i).getName(), 0);
 		//}
+		Data.resetSeats();
 		
 		// Calculate the number of seats for each party
 		for (int i = 1; i <= seats; i++) {

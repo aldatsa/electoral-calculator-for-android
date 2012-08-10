@@ -24,4 +24,10 @@ public class Data {
 		}
 		return tmpTotalVotes;
 	}
+	
+	public static void resetSeats() {
+		for (int pos = 0; pos < listOfParties.size(); pos++) {
+			listOfParties.get(pos).setSeats(0);
+		}
+	}
 }
