@@ -45,4 +45,7 @@ public class Party {
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
+	public void setSeatsPlusOne() {
+		this.seats = this.seats + 1;
+	}
 }

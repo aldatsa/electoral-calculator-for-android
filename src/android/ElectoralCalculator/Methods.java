@@ -107,7 +107,7 @@ public enum Methods {
 				}
 			}
 			// The party with the highest quot gets another seat
-			Data.listOfParties.get(seatToPos).setSeats(Data.listOfParties.get(seatToPos).getSeats() + 1);
+			Data.listOfParties.get(seatToPos).setSeatsPlusOne();
 		}
 		
 		/* TODO: Complete this
@@ -185,7 +185,7 @@ public enum Methods {
     		}
     		
     		// The highest remainder gets another seat
-    		Data.listOfParties.get(tmpHighestRemainderPos).setSeats(Data.listOfParties.get(tmpHighestRemainderPos).getSeats() + 1);   		
+    		Data.listOfParties.get(tmpHighestRemainderPos).setSeatsPlusOne();   		
     		// Add one to tempSeats
     		tempSeats = tempSeats + 1;
 
