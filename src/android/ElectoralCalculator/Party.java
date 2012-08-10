@@ -33,7 +33,7 @@ public class Party {
 	public void setVotes(int votes) {
 		this.votes = votes;
 	}
-	public double getVotePercent(String name) {
+	public double getVotePercent() {
 		return this.votePercent;
 	}
 	public void setVotePercent(double votePercent) {
