@@ -84,10 +84,10 @@ public class OptionsActivity extends Activity
 					toast.show();
 				}
 				/*
-				 * else if the list of parties (name -> votes) is empty show a toast
+				 * else if the list of parties (name, votes) is empty show a toast
 				 * and go back to PartyListActivity
 				 */
-				else if (Data.votes.isEmpty())
+				else if (Data.listOfParties.isEmpty())
 				{
 					Context context = getApplicationContext();
 					CharSequence text = getString(R.string.toastVotesMapEmpty);

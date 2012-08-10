@@ -19,8 +19,7 @@ public class ResultActivity extends Activity{
 	ArrayAdapter<String> adapter;
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.results);
      
@@ -28,18 +27,17 @@ public class ResultActivity extends Activity{
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         listResults.setAdapter(adapter);
         
-        for (String s: Data.results.keySet())
-		{
-			listItems.add(s + " (" + Data.votes.get(s) + " votes (" + roundTo2Decimals(((double) Data.votes.get(s) / Data.totalVotes) * 100) + "%))" + ": " + Data.results.get(s) + " seats\n");
+        for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
+			listItems.add(Data.listOfParties.get(pos).getName().toString() + " (" + Data.listOfParties.get(pos).getVotes() + " votes (" + roundTo2Decimals(((double) Data.listOfParties.get(pos).getVotes() / Data.totalVotes) * 100) + "%))" + ": " + Data.results.get(Data.listOfParties.get(pos).getName().toString()) + " seats\n");
 		}
         adapter.notifyDataSetChanged();
 	}
 	
-	private double roundTo2Decimals(double d)
-    {
+	private double roundTo2Decimals(double d) {
     	DecimalFormat twoDForm = new DecimalFormat(getString(R.string.twoDecimalFormat)); // #.## or #,##
     	return Double.valueOf(twoDForm.format(d));
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	super.onCreateOptionsMenu(menu);

@@ -53,7 +53,7 @@ public class PartyListActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				if (Data.votes.isEmpty()) {
+				if (Data.listOfParties.isEmpty()) {
     				Context context = getApplicationContext();
     				CharSequence text = getString(R.string.toastPartyListEmpty);
     				int duration = Toast.LENGTH_SHORT;
@@ -83,9 +83,7 @@ public class PartyListActivity extends Activity {
         buttonClearList.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Clear the map
-				Data.votes.clear();
-
+				// Clear the list of parties and notify the adapter
 				Data.listOfParties.clear();
 				adapter.notifyDataSetChanged();
 			}
