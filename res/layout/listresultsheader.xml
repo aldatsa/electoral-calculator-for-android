@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/result_list_header"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/result_list_header_name"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/party_header" />
+
+    <TextView
+        android:id="@+id/result_list_header_votes"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/votes_header" />
+
+    <TextView
+        android:id="@+id/result_list_header_vote_percents"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/percents_header" />
+    
+    <TextView
+        android:id="@+id/result_list_header_seats"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/seats_header" />
+    
+    <TextView
+        android:id="@+id/result_list_header_next_seat"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/next_seat_header" />
+    
+</LinearLayout>

@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,6 +27,14 @@ public class ResultActivity extends Activity{
         setContentView(R.layout.results);
      
         listResults = (ListView)findViewById(R.id.listResults);
+        
+        // Inflate the header for listParties
+        LayoutInflater inflater = getLayoutInflater();
+        View header = inflater.inflate(R.layout.listresultsheader, (ViewGroup) findViewById(R.id.result_list_header));
+        
+        // Add the header to listParties
+        listResults.addHeaderView(header, null, false); // addHeaderView(view, data, isSelectable);
+        
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         listResults.setAdapter(adapter);
         

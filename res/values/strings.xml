@@ -45,4 +45,7 @@
 	<string name="editparty_title">Edit party</string>
 	<string name="party_header">Party</string>
 	<string name="votes_header">Votes</string>
+	<string name="percents_header">Percent</string>
+	<string name="seats_header">Seats</string>
+	<string name="next_seat_header">Next seat</string>
 </resources>
