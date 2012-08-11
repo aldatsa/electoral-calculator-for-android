@@ -13,10 +13,26 @@ public class PartyList extends ArrayList<Party> {
 	
 	private List<Party> partyList = new ArrayList<Party>();
 
-    public void getPartyName(int position){
-         partyList.get(position).getName().toString();
+    public String getPartyName(int position) {
+        return partyList.get(position).getName().toString();
     }
 
+    public int getPartyVotes(int position) {
+    	return partyList.get(position).getVotes();
+    }
+    
+    public double getPartyVotePercent(int position) {
+    	return partyList.get(position).getVotePercent();
+    }
+    
+    public int getPartySeats(int position) {
+    	return partyList.get(position).getSeats();
+    }
+    
+    public int getVotesToNextSeat(int position) {
+    	return partyList.get(position).getVotesToNextSeat();
+    }
+    
     public Iterator<Party> getIter(){
         return partyList.iterator();
     }
