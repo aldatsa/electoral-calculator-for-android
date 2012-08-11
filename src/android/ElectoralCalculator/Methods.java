@@ -102,17 +102,28 @@ public enum Methods {
 			Data.listOfParties.get(seatToPos).setSeatsPlusOne();
 		}
 		
-		/* TODO: Complete this
-		for (String s: PartyListActivity.votes.keySet()) {
+		// Calculate the extra votes that each party needs to get another seat
+		for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
 			// The party that got the last seat needs 0 votes to get the last seat
-			if (s == seatTo) {
-				nextSeat.put(s, 0);
+			if (pos == seatToPos) {
+				Data.listOfParties.get(pos).setVotesToNextSeat(0);
 			// The rest of parties need to get a bigger quot than the party that got the last seat
 			} else {
-				nextSeat.put(s, );
+				//nextSeat.put(s, );
+				Double tmpLastQuotSeatToPos = lastQuot.get(Data.listOfParties.get(seatToPos).getName().toString());
+				double tmpDivisorPos = Methods.getDivisor(Data.listOfParties.get(pos).getSeats());
+				int tmpVotesPos = Data.listOfParties.get(pos).getVotes();
+				int tmpVotesToNextSeatPos = Data.listOfParties.get(pos).getVotesToNextSeat();
+				Integer tmpVotesSeatToPos = Data.listOfParties.get(seatToPos).getVotes();
+				Data.listOfParties.get(pos).setVotesToNextSeat((int) (Math.ceil(tmpLastQuotSeatToPos * tmpDivisorPos) - tmpVotesPos));
+				
+				if ((tmpLastQuotSeatToPos.equals(tmpVotesPos + tmpVotesToNextSeatPos) ||
+					 tmpLastQuotSeatToPos.equals((tmpVotesPos + tmpVotesToNextSeatPos) / Methods.getDivisor(Data.listOfParties.get(seatToPos).getSeats())))
+					&&  tmpVotesSeatToPos.compareTo(tmpVotesPos) > 0) {
+						Data.listOfParties.get(pos).setSeatsPlusOne();
+				}
 			}
 		}
-		*/
     }
 
     private static void calculateLargestRemainder(int numSeats, List<Party> votes) {

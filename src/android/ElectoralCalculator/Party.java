@@ -5,19 +5,21 @@ public class Party {
 	private int votes;
 	private double votePercent;
 	private int seats;
+	private int votesToNextSeat;
 	
 	// General constructor for the Party class
-	public Party(String name, int votes, double votePercent, int seats) {
+	public Party(String name, int votes, double votePercent, int seats, int votesToNextSeat) {
 		super();
 		this.name = name;
 		this.votes = votes;
 		this.votePercent = votePercent;
 		this.seats = seats;
+		this.votesToNextSeat = votesToNextSeat;
 	}
 	
 	// Constructor for the Party class with name and votes parameters
 	public Party(String name, int votes) {
-		this(name, votes, 0.0, 0);
+		this(name, votes, 0.0, 0, 0);
 	}
 	
 	// Getter and setter methods for all the fields.
@@ -47,5 +49,11 @@ public class Party {
 	}
 	public void setSeatsPlusOne() {
 		this.seats = this.seats + 1;
+	}
+	public int getVotesToNextSeat() {
+		return this.votesToNextSeat;
+	}
+	public void setVotesToNextSeat(int votesToNextSeat) {
+		this.votesToNextSeat = votesToNextSeat;
 	}
 }
