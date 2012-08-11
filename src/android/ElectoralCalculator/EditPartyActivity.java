@@ -34,12 +34,12 @@ public class EditPartyActivity extends Activity {
         editParty = (EditText)findViewById(R.id.editParty);
         
         // Get the name of the party selected in PartyListActivity using its position on the list listOfParties
-        editParty.setText(Data.listOfParties.get(list_position).getName().toString());
+        editParty.setText(Data.listOfParties.getPartyName(list_position));
         
         editVotes = (EditText)findViewById(R.id.editVotes);
         
         // Get the name of the party selected in PartyListActivity using its position on the list listOfParties
-        editVotes.setText(Integer.toString(Data.listOfParties.get(list_position).getVotes()));
+        editVotes.setText(Integer.toString(Data.listOfParties.getPartyVotes(list_position)));
 
         buttonAddNewParty = (Button)findViewById(R.id.buttonAddNewParty);
         
