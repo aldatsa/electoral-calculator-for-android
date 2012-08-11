@@ -14,14 +14,14 @@ public class Data {
 		int tmpTotalVotes = 0;
 
 		for (int pos = 0; pos < listOfParties.size(); pos++) {
-			tmpTotalVotes = tmpTotalVotes + listOfParties.get(pos).getVotes();
+			tmpTotalVotes = tmpTotalVotes + listOfParties.getPartyVotes(pos);
 		}
 		return tmpTotalVotes;
 	}
 	
 	public static void resetSeats() {
 		for (int pos = 0; pos < listOfParties.size(); pos++) {
-			listOfParties.get(pos).setSeats(0);
+			listOfParties.setPartySeats(pos, 0);
 		}
 	}
 }
