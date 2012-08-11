@@ -1,7 +1,5 @@
 package android.ElectoralCalculator;
 
-import java.text.DecimalFormat;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,11 +34,6 @@ public class ResultActivity extends Activity{
         
         adapter.notifyDataSetChanged();
 	}
-	
-	private double roundTo2Decimals(double d) {
-    	DecimalFormat twoDForm = new DecimalFormat(getString(R.string.twoDecimalFormat)); // #.## or #,##
-    	return Double.valueOf(twoDForm.format(d));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

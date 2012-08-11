@@ -22,6 +22,10 @@ public class PartyList extends ArrayList<Party> {
     	return this.get(position).getVotePercent();
     }
     
+    public void setPartyVotePercent(int position, double votePercent) {
+    	this.get(position).setVotePercent(votePercent);
+    }
+
     public int getPartySeats(int position) {
     	return this.get(position).getSeats();
     }

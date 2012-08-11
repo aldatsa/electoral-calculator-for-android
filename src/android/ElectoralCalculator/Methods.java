@@ -1,5 +1,6 @@
 package android.ElectoralCalculator;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,13 @@ public enum Methods {
 	{
 		method = calculationMethod;
 	}
+		
+	public static double roundTo2Decimals(double d) {
+		// TODO: I can't access the strings from R in roundTo2Decimals
+		// I want to use the value of R.string.twoDecimalFormat but I can't
+    	DecimalFormat twoDForm = new DecimalFormat("#.##"); // This should be #.## or #,## or any other format
+    	return Double.valueOf(twoDForm.format(d));
+    }
 	
     public static double  getDivisor(Integer numSeats) {
     	if (method.equals(DHONDT)) {
@@ -52,6 +60,12 @@ public enum Methods {
     		calculateHighestAverage(seats, votes);
     	} else { //if (method.equals(HARE_QUOTA) || method.equals(DROOP_QUOTA)){
     		calculateLargestRemainder(seats, votes);
+    	}
+    	// Calculate and include the vote percent that each party got in listOfParties
+    	double votePercent = 0.0;
+    	for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
+    		votePercent = roundTo2Decimals(((double) Data.listOfParties.getPartyVotes(pos) / Data.totalVotes) * 100);
+    		Data.listOfParties.setPartyVotePercent(pos, votePercent);
     	}
     }
     private static void calculateHighestAverage(int seats, List<Party> votes) {
