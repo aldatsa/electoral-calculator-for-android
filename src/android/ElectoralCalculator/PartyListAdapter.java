@@ -1,7 +1,5 @@
 package android.ElectoralCalculator;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +11,9 @@ import android.widget.TextView;
 public class PartyListAdapter extends BaseAdapter implements OnClickListener {
     private Context context;
 
-    private List<Party> listParties;
+    private PartyList listParties;
 
-    public PartyListAdapter(Context context, List<Party> listParties) {
+    public PartyListAdapter(Context context, PartyList listParties) {
         this.context = context;
         this.listParties = listParties;
     }
