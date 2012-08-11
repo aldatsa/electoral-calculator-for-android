@@ -76,7 +76,7 @@ public enum Methods {
 				tmpPartyVotes = votes.get(pos).getVotes();
 				
 				// Calculate the quot for this party in this round
-				double quot = (double) tmpPartyVotes / Methods.getDivisor(Data.listOfParties.get(pos).getSeats());
+				double quot = (double) tmpPartyVotes / Methods.getDivisor(Data.listOfParties.getPartySeats(pos));
 				
 				// If the quot is bigger than the highest value in this round
 				if (quot > highest) {
@@ -87,7 +87,7 @@ public enum Methods {
 				// else if the quot is equal to the highest value in this round
 				} else if (quot == highest) {
 					// The seat goes to the party that has more votes
-					if (tmpPartyVotes > Data.listOfParties.get(seatToPos).getVotes()) {
+					if (tmpPartyVotes > Data.listOfParties.getPartyVotes(seatToPos)) {
 						seatToPos = pos;
 						highest = quot;
 					}
@@ -95,32 +95,33 @@ public enum Methods {
 				
 				// Save the last quots to calculate the number of extra votes needed to get the last seat
 				if (i == seats) {
-					lastQuot.put(Data.listOfParties.get(seatToPos).getName().toString(), quot);
+					lastQuot.put(Data.listOfParties.getPartyName(seatToPos), quot);
 				}
 			}
 			// The party with the highest quot gets another seat
-			Data.listOfParties.get(seatToPos).setSeatsPlusOne();
+			Data.listOfParties.setSeatsPlusOne(seatToPos);
 		}
 		
 		// Calculate the extra votes that each party needs to get another seat
 		for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
 			// The party that got the last seat needs 0 votes to get the last seat
 			if (pos == seatToPos) {
-				Data.listOfParties.get(pos).setVotesToNextSeat(0);
+				Data.listOfParties.setVotesToNextSeat(pos, 0);
 			// The rest of parties need to get a bigger quot than the party that got the last seat
 			} else {
 				//nextSeat.put(s, );
-				Double tmpLastQuotSeatToPos = lastQuot.get(Data.listOfParties.get(seatToPos).getName().toString());
-				double tmpDivisorPos = Methods.getDivisor(Data.listOfParties.get(pos).getSeats());
-				int tmpVotesPos = Data.listOfParties.get(pos).getVotes();
-				int tmpVotesToNextSeatPos = Data.listOfParties.get(pos).getVotesToNextSeat();
-				Integer tmpVotesSeatToPos = Data.listOfParties.get(seatToPos).getVotes();
-				Data.listOfParties.get(pos).setVotesToNextSeat((int) (Math.ceil(tmpLastQuotSeatToPos * tmpDivisorPos) - tmpVotesPos));
+				Double tmpLastQuotSeatToPos = lastQuot.get(Data.listOfParties.getPartyName(seatToPos));
+				double tmpDivisorPos = Methods.getDivisor(Data.listOfParties.getPartySeats(pos));
+				int tmpVotesPos = Data.listOfParties.getPartyVotes(pos);
+				int tmpVotesToNextSeatPos = Data.listOfParties.getVotesToNextSeat(pos);
+				Integer tmpVotesSeatToPos = Data.listOfParties.getPartyVotes(seatToPos);
+				
+				Data.listOfParties.setVotesToNextSeat(pos, (int) (Math.ceil(tmpLastQuotSeatToPos * tmpDivisorPos) - tmpVotesPos));
 				
 				if ((tmpLastQuotSeatToPos.equals(tmpVotesPos + tmpVotesToNextSeatPos) ||
-					 tmpLastQuotSeatToPos.equals((tmpVotesPos + tmpVotesToNextSeatPos) / Methods.getDivisor(Data.listOfParties.get(seatToPos).getSeats())))
+					 tmpLastQuotSeatToPos.equals((tmpVotesPos + tmpVotesToNextSeatPos) / Methods.getDivisor(Data.listOfParties.getPartySeats(seatToPos))))
 					&&  tmpVotesSeatToPos.compareTo(tmpVotesPos) > 0) {
-						Data.listOfParties.get(pos).setSeatsPlusOne();
+						Data.listOfParties.setSeatsPlusOne(pos);
 				}
 			}
 		}
@@ -160,9 +161,9 @@ public enum Methods {
     		tmpPartyName = votes.get(pos).getName();
     		tmpPartyVotes = votes.get(pos).getVotes();
     		tempVQ = tmpPartyVotes / quota;
-    		Data.listOfParties.get(pos).setSeats((int)tempVQ);
-    		remainder.put(tmpPartyName, tempVQ - Data.listOfParties.get(pos).getSeats());
-    		tempSeats = tempSeats + Data.listOfParties.get(pos).getSeats();
+    		Data.listOfParties.setPartySeats(pos, (int)tempVQ);
+    		remainder.put(tmpPartyName, tempVQ - Data.listOfParties.getPartySeats(pos));
+    		tempSeats = tempSeats + Data.listOfParties.getPartySeats(pos);
     	}
     	
     	/*
@@ -179,16 +180,17 @@ public enum Methods {
     		
     		// Find the highest remainder in this round
     		for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
-    			currentRemainder = remainder.get(Data.listOfParties.get(pos).getName()); 
+    			currentRemainder = remainder.get(Data.listOfParties.getPartyName(pos));
     			if (currentRemainder.compareTo(tmpHighestRemainder) > 0) {
     				tmpHighestRemainder = currentRemainder;
     				tmpHighestRemainderPos = pos;
-    				tmpHighestRemainderParty = Data.listOfParties.get(pos).getName();
+    				tmpHighestRemainderParty = Data.listOfParties.getPartyName(pos);
     			}
     		}
     		
     		// The highest remainder gets another seat
-    		Data.listOfParties.get(tmpHighestRemainderPos).setSeatsPlusOne();   		
+    		Data.listOfParties.setSeatsPlusOne(tmpHighestRemainderPos);
+
     		// Add one to tempSeats
     		tempSeats = tempSeats + 1;
 
