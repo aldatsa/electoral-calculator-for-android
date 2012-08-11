@@ -28,7 +28,9 @@ public class ResultActivity extends Activity{
         listResults.setAdapter(adapter);
         
         for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
-			listItems.add(Data.listOfParties.get(pos).getName().toString() + " (" + Data.listOfParties.get(pos).getVotes() + " votes (" + roundTo2Decimals(((double) Data.listOfParties.get(pos).getVotes() / Data.totalVotes) * 100) + "%))" + ": " + Data.listOfParties.get(pos).getSeats() + " seats\n" + "Votes to next seat: " + Data.listOfParties.get(pos).getVotesToNextSeat());
+        	listItems.add(Data.listOfParties.getPartyName(pos) + " (" + Data.listOfParties.getPartyVotes(pos) +
+        			" votes (" + roundTo2Decimals(((double) Data.listOfParties.getPartyVotes(pos) / Data.totalVotes) * 100) + "%))" +
+        			": " + Data.listOfParties.getPartySeats(pos) + " seats\n" + "Votes to next seat: " + Data.listOfParties.getVotesToNextSeat(pos));
 		}
         adapter.notifyDataSetChanged();
 	}
