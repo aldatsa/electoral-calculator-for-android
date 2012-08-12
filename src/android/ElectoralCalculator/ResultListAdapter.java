@@ -49,7 +49,11 @@ public class ResultListAdapter extends BaseAdapter {
         tvSeats.setText(String.valueOf(entry.getSeats()));
 
         TextView tvNextSeat = (TextView) convertView.findViewById(R.id.result_list_row_next_seat);
+        if (Methods.getCalculationMethod().equals(Methods.DROOP_QUOTA) || Methods.getCalculationMethod().equals(Methods.HARE_QUOTA)) {
+        	tvNextSeat.setText("-");
+        } else {
         tvNextSeat.setText(String.valueOf(entry.getVotesToNextSeat()));
+        }
         
         return convertView;
     }

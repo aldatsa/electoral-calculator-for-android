@@ -9,7 +9,7 @@ public enum Methods {
 	DHONDT, SAINTE_LAGUE, MODIFIED_SAINTE_LAGUE, IMPERIALI, HARE_QUOTA, DROOP_QUOTA;
 
 	private static Methods method = DHONDT;
-	
+
 	private static double MSLFD = 1.4;
 	
 	public static double getMSLFD() {
@@ -116,13 +116,16 @@ public enum Methods {
 			Data.listOfParties.setSeatsPlusOne(seatToPos);
 		}
 		
+		// Reset the value of the extra votes that each party needs to get another seat to zero
+		for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
+			Data.listOfParties.setVotesToNextSeat(pos, 0);
+		}
+		
 		// Calculate the extra votes that each party needs to get another seat
 		for (int pos = 0; pos < Data.listOfParties.size(); pos++) {
-			// The party that got the last seat needs 0 votes to get the last seat
-			if (pos == seatToPos) {
-				Data.listOfParties.setVotesToNextSeat(pos, 0);
+			// We don't need to do the calculation for the party that got the last seat, as it needs 0 votes to get the last seat
 			// The rest of parties need to get a bigger quot than the party that got the last seat
-			} else {
+			if (pos != seatToPos) {
 				Double tmpLastQuotSeatToPos = lastQuot.get(Data.listOfParties.getPartyName(seatToPos));
 				double tmpDivisorPos = Methods.getDivisor(Data.listOfParties.getPartySeats(pos));
 				int tmpVotesPos = Data.listOfParties.getPartyVotes(pos);
