@@ -48,4 +48,5 @@
 	<string name="percents_header">Percent</string>
 	<string name="seats_header">Seats</string>
 	<string name="next_seat_header">Next seat</string>
+	<string name="results">Results</string>
 </resources>

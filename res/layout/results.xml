@@ -6,10 +6,10 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/txtvwPartyList"
+        android:id="@+id/txtvwResultList"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtvwPartyList" />
+        android:text="@string/results" />
 
     <ListView
         android:id="@+id/listResults"
