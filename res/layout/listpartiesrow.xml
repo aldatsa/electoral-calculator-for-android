@@ -10,13 +10,15 @@
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/txtvwPartyList_votes"
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>
