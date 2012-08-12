@@ -49,4 +49,6 @@
 	<string name="seats_header">Ahulkiak</string>
 	<string name="next_seat_header">Hurrengorako</string>
 	<string name="results">Emaitzak</string>
+	<string name="MSLFD_pref_summary">Sartu lehen zatitzailearen balioa</string>
+	<string name="modified_sainte_laguë">Aldatutako Sainte-Laguë</string>
 </resources>

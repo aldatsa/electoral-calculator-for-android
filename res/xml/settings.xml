@@ -10,8 +10,8 @@
         android:entryValues="@array/methods_values" />
 	<EditTextPreference
 	    android:key="MSLFDpref"
-        android:summary="Enter the value of the first divisor"
+        android:summary="@string/MSLFD_pref_summary"
         android:defaultValue="1.4"
-        android:title="Modified Sainte-Laguë"
+        android:title="@string/modified_sainte_laguë"
         android:inputType="number" />
 </PreferenceScreen>

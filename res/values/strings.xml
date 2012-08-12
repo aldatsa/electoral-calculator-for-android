@@ -49,4 +49,6 @@
 	<string name="seats_header">Seats</string>
 	<string name="next_seat_header">Next seat</string>
 	<string name="results">Results</string>
+	<string name="MSLFD_pref_summary">Enter the value of the first divisor</string>
+	<string name="modified_sainte_laguë">Modified Sainte-Laguë</string>
 </resources>
