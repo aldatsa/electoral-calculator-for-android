@@ -4,11 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class ResultListAdapter extends BaseAdapter implements OnClickListener {
+public class ResultListAdapter extends BaseAdapter {
     private Context context;
 
     private PartyList listResults;
@@ -54,18 +53,4 @@ public class ResultListAdapter extends BaseAdapter implements OnClickListener {
         
         return convertView;
     }
-	
-    @Override
-    public void onClick(View view) {
-        Party entry = (Party) view.getTag();
-        listResults.remove(entry);
-        notifyDataSetChanged();
-
-    }
-
-    private void showDialog(Party entry) {
-        // Create and show your dialog
-        // Depending on the Dialogs button clicks delete it or do nothing
-    }
-
 }
