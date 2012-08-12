@@ -123,19 +123,19 @@ public enum Methods {
 				Data.listOfParties.setVotesToNextSeat(pos, 0);
 			// The rest of parties need to get a bigger quot than the party that got the last seat
 			} else {
-				//nextSeat.put(s, );
 				Double tmpLastQuotSeatToPos = lastQuot.get(Data.listOfParties.getPartyName(seatToPos));
 				double tmpDivisorPos = Methods.getDivisor(Data.listOfParties.getPartySeats(pos));
 				int tmpVotesPos = Data.listOfParties.getPartyVotes(pos);
-				int tmpVotesToNextSeatPos = Data.listOfParties.getVotesToNextSeat(pos);
-				Integer tmpVotesSeatToPos = Data.listOfParties.getPartyVotes(seatToPos);
 				
 				Data.listOfParties.setVotesToNextSeat(pos, (int) (Math.ceil(tmpLastQuotSeatToPos * tmpDivisorPos) - tmpVotesPos));
 				
+				int tmpVotesToNextSeatPos = Data.listOfParties.getVotesToNextSeat(pos);
+				Integer tmpVotesSeatToPos = Data.listOfParties.getPartyVotes(seatToPos);
+				
 				if ((tmpLastQuotSeatToPos.equals(tmpVotesPos + tmpVotesToNextSeatPos) ||
-					 tmpLastQuotSeatToPos.equals((tmpVotesPos + tmpVotesToNextSeatPos) / Methods.getDivisor(Data.listOfParties.getPartySeats(seatToPos))))
-					&&  tmpVotesSeatToPos.compareTo(tmpVotesPos) > 0) {
-						Data.listOfParties.setSeatsPlusOne(pos);
+					 tmpLastQuotSeatToPos.equals((tmpVotesPos + tmpVotesToNextSeatPos) / tmpDivisorPos)
+					&&  tmpVotesSeatToPos.compareTo(tmpVotesPos) > 0)) {
+						Data.listOfParties.setVotesToNextSeat(pos, Data.listOfParties.getVotesToNextSeat(pos) + 1);
 				}
 			}
 		}
