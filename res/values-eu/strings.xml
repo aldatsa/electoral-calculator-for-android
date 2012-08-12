@@ -31,4 +31,22 @@
 	Lizentzia: GNU GPL version 3
 	</string>
 	<string name="about_label">Honi buruz&#8230;</string>
+		<string name="addparty_title">Gehitu alderdia</string>
+	<string name="accept">Onartu</string>
+	<string name="cancel">Utzi</string>
+	<string name="toastPartyListEmpty">Alderdien zerrenda hutsik dago</string>
+	<string name="settings_label">Ezarpenak&#8230;</string>
+	<string name="default_method_label">Metodo lehenetsia</string>
+	<string name="default_method_summary">Hautatu modu lehenetsian erabiliko den metodoa</string>
+	<string name="buttonClearList">Garbitu zerrenda</string>
+	<string name="edit">Editatu</string>
+	<string name="remove">Kendu</string>
+	<string name="removeedit_title">Zer egin nahi duzu?</string>
+	<string name="editparty_title">Editatu alderdia</string>
+	<string name="party_header">Alderdia</string>
+	<string name="votes_header">Botuak</string>
+	<string name="percents_header">Ehunekoa</string>
+	<string name="seats_header">Ahulkiak</string>
+	<string name="next_seat_header">Hurrengorako</string>
+	<string name="results">Emaitzak</string>
 </resources>
