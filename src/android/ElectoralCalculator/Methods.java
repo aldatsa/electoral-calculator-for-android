@@ -1,6 +1,7 @@
 package android.ElectoralCalculator;
 
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +68,7 @@ public enum Methods {
     		votePercent = roundTo2Decimals(((double) Data.listOfParties.getPartyVotes(pos) / Data.totalVotes) * 100);
     		Data.listOfParties.setPartyVotePercent(pos, votePercent);
     	}
+    	Collections.sort(Data.listOfParties, new PartyListComparator());
     }
     private static void calculateHighestAverage(int seats, List<Party> votes) {
     	double highest = 0.0;
