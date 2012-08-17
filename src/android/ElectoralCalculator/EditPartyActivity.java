@@ -1,5 +1,7 @@
 package android.ElectoralCalculator;
 
+import java.util.Collections;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -57,6 +59,9 @@ public class EditPartyActivity extends Activity {
     			if (strNewParty.length() > 0 && strNewVotes.length() > 0)
     			{
     				Data.listOfParties.set(list_position, new Party(strNewParty, Integer.parseInt(strNewVotes)));
+    				
+    				// Sort the list of parties by the number of votes
+    				Collections.sort(Data.listOfParties, new PartyListComparator());
     				
     				// Clean the EditTexts
     				editParty.setText("");
